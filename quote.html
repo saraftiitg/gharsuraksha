@@ -186,11 +186,12 @@
                 warranties.push("Structural Anti-Termite treatments include comprehensive service warranty protections up to 7 years on combo packages.");
             }
 
-            // 2. Post-Construction Pricing Calculation (Multiplier Removed)
+            // 2. Post-Construction Pricing Calculation (Original Footprint Multiplier Kept)
             if (wantPost) {
-                let postCost = area * 7;
+                let postArea = area * 2; 
+                let postCost = postArea * 7;
                 total += postCost;
-                tableContent += `<tr><td><strong>Phase B: Post-Construction Junction Treatment</strong><br>High-precision technical core-drilling tracking vectors spaced at 1-foot intervals along structural walls with pressure-injection barriers.</td><td>${area.toLocaleString('en-IN')} Sq.Ft.</td><td>₹${postCost.toLocaleString('en-IN')}.00</td></tr>`;
+                tableContent += `<tr><td><strong>Phase B: Post-Construction Junction Treatment</strong><br>High-precision technical core-drilling tracking vectors spaced at 1-foot intervals along structural walls with pressure-injection barriers.</td><td>${postArea.toLocaleString('en-IN')} Sq.Ft.</td><td>₹${postCost.toLocaleString('en-IN')}.00</td></tr>`;
                 if (!wantPre) {
                     warranties.push("Post-Construction treatments feature full multi-year protective service performance commitments.");
                 }
