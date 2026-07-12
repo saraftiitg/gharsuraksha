@@ -3,91 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghar Suraksha Solutions | Professional Pest Control Nagpur</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for professional typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Ghar Suraksha | Structural Anti-Termite Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Header / Navbar -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="logo.JPG" alt="Ghar Suraksha Logo" style="height: 50px; width: auto; vertical-align: middle; margin-right: 10px;">
-                GHAR SURAKSHA
+    <!-- Header -->
+    <header class="bg-white border-b-3 border-blue-600 shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-black text-slate-900 tracking-wide">GHAR SURAKSHA</h1>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Structural Anti-Termite Solutions</p>
             </div>
-            <a href="tel:+917058876498" class="btn btn-secondary">Call: +91 70588 76498</a>
+            <a href="quote.html" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded transition">
+                Salesman Portal
+            </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-container">
-            <h1>Protect Your Home & Family From Hidden Pests</h1>
-            <p>Don't just chase pests deeper into your walls with temporary supermarket sprays. Get an ironclad, 100% odorless scientific treatment that eliminates the root of the colony permanently.</p>
-            <div class="hero-buttons">
-                <a href="https://wa.me/917058876498?text=Hi,%20I%20want%20to%20get%20a%20free%20pest%20control%20quote." class="btn btn-primary">Get Free Quote via WhatsApp</a>
+    <!-- Importance Index & Information Section -->
+    <main class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-7 space-y-8">
+            <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h2 class="text-xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3 mb-4 uppercase tracking-wide">
+                    Why Structural Protection is Vital
+                </h2>
+                <p class="text-gray-600 leading-relaxed text-justify mb-4">
+                    Termites live deep underground beneath your property. As a building settles over time, tiny, invisible cracks form inside the foundation, plinth, and brickwork. Termites use these gaps like a private highway to climb straight into your living spaces[cite: 1].
+                </p>
+                <p class="text-gray-600 leading-relaxed text-justify">
+                    Once inside, they aggressively destroy expensive modular kitchens, luxury wardrobes, and door frames from the inside out. By treating the structures early, you create an unbreakable chemical barrier that permanently locks termites out[cite: 1].
+                </p>
+            </section>
+
+            <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h2 class="text-xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3 mb-4 uppercase tracking-wide">
+                    Our Treatment Core Stages
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-50 rounded border border-gray-200">
+                        <h3 class="font-bold text-blue-700 text-sm uppercase mb-1">Pre-Construction Shield</h3>
+                        <p class="text-xs text-gray-600">Treating the foundation trenches, plinth backfill soil, and floor slab matrix before casting to form a complete horizontal boundary underground[cite: 1].</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded border border-gray-200">
+                        <h3 class="font-bold text-blue-700 text-sm uppercase mb-1">Post-Construction Barrier</h3>
+                        <p class="text-xs text-gray-600">High-precision drilling (1 foot apart) along internal wall-floor junctions, followed by deep chemical pressure injection and clean white cement sealing[cite: 1, 3].</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Quick Customer Estimator Side Panel -->
+        <div class="lg:col-span-5">
+            <div class="bg-slate-900 text-white p-6 rounded-xl shadow-md sticky top-24">
+                <h3 class="text-lg font-bold uppercase tracking-wide border-b border-slate-700 pb-3 mb-4 text-blue-400">
+                    Instant Budget Calculator
+                </h3>
+                <p class="text-xs text-slate-400 mb-6">Get a quick estimate instantly. No personal details required.</p>
+                
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Treatment Type</label>
+                        <select id="calcType" class="w-full bg-slate-800 border border-slate-700 rounded p-2.5 text-sm text-white focus:outline-none focus:border-blue-500" onchange="calculateEstimate()">
+                            <option value="6">Post-Construction Treatment (Standard)</option>
+                            <option value="8">Pre-Construction Full Matrix Package</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Approximate Area (Sq. Ft.)</label>
+                        <input type="number" id="calcArea" value="1500" min="100" class="w-full bg-slate-800 border border-slate-700 rounded p-2.5 text-sm text-white focus:outline-none focus:border-blue-500" oninput="calculateEstimate()">
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-lg border border-slate-700 mt-6 text-center">
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Estimated Project Cost</span>
+                        <span class="text-3xl font-black text-white" id="calcDisplay">₹9,000.00</span>
+                    </div>
+
+                    <a href="quote.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition text-sm uppercase tracking-wide mt-4">
+                        Get Official Custom Quote
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Why Choose Us / Value Proposition -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">The Ghar Suraksha Advantage</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">🚫💨</div>
-                    <h3>100% Odorless & Safe</h3>
-                    <p>No choking chemical smells or toxic residues. Safe for children and pets. You don't even need to empty your kitchen cabinets.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎯🪺</div>
-                    <h3>Nest Elimination</h3>
-                    <p>We use advanced German gel baits that targets hidden colonies deep inside modular voids, destroying the root of the infestation.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🛡️📜</div>
-                    <h3>1-Year Ironclad Warranty</h3>
-                    <p>Pay once and enjoy complete peace of mind for 365 days. If any targeted pests reappear, we re-treat your home completely FREE.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Offered -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">Our Expert Solutions</h2>
-            <div class="grid">
-                <div class="service-box">
-                    <h3>🐜 General Pest Control</h3>
-                    <p>Complete eradication of German cockroaches, foraging ants, silverfish, and spiders using target-specific, low-toxicity applications.</p>
-                </div>
-                <div class="service-box">
-                    <h3>🪵 Anti-Termite Protection</h3>
-                    <p>Pre and Post-construction structural drilling and soil barriers providing deep, long-term structural defense with up to 7-year warranties.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <h2>Stop Wasting Money On Temporary Fixes</h2>
-            <p>Save your hard-earned money and protect your family's health today. Get a permanent, professional setup scheduled.</p>
-            <a href="https://wa.me/917058876498" class="btn btn-primary btn-large">Book Your Treatment Now</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>&copy; 2026 Ghar Suraksha Solutions, Nagpur. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    <script>
+        function calculateEstimate() {
+            const rate = parseFloat(document.getElementById('calcType').value);
+            const area = parseFloat(document.getElementById('calcArea').value) || 0;
+            const total = area * rate;
+            document.getElementById('calcDisplay').innerText = '₹' + total.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+        window.onload = calculateEstimate;
+    </script>
 </body>
 </html>
