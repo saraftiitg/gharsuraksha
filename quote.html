@@ -1,231 +1,218 @@
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghar Suraksha | Premium Quote Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Create Quotation | Ghar Suraksha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Poppins', sans-serif; margin: 20px; background: #f4f6f9; color: #333; }
-        .form-container { max-width: 650px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h2 { color: #0f2c59; margin-top: 0; }
-        label { display: block; margin: 12px 0 5px; font-weight: 600; }
-        input[type="text"], input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        
-        /* Checkbox Group Styling */
-        .services-group { background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 15px; }
-        .checkbox-label { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-weight: 400; cursor: pointer; }
-        .checkbox-label input { width: 18px; height: 18px; cursor: pointer; }
-        
-        .conditional-box { background: #fff; padding: 12px; border: 1px dashed #cbd5e1; border-radius: 4px; margin-top: 8px; display: none; }
-        
-        button { background: #0f2c59; color: white; border: none; padding: 12px 20px; font-size: 1rem; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 20px; font-weight: 600; }
-        button:hover { background: #1d4480; }
-        
-        /* Preview Output Styling */
-        #output { display: none; max-width: 800px; margin: 30px auto; background: white; padding: 40px; border-radius: 4px; box-shadow: 0 0 20px rgba(0,0,0,0.1); border-top: 8px solid #0f2c59; }
-        .quote-header { display: flex; justify-content: space-between; border-bottom: 2px solid #eee; padding-bottom: 20px; align-items: flex-start; }
-        
-        .company-title { font-size: 1.8rem; font-weight: 700; color: #0f2c59; }
-        .matrix-table { width: 100%; border-collapse: collapse; margin: 25px 0; }
-        .matrix-table th { background: #0f2c59; color: white; text-align: left; padding: 12px; }
-        .matrix-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .grand-total { font-size: 1.4rem; font-weight: 700; text-align: right; color: #0f2c59; margin-top: 15px; }
-        .print-btn { background: #25d366; margin-bottom: 20px; border: none; color: white; padding: 12px 20px; font-size: 1rem; border-radius: 4px; cursor: pointer; font-weight: 600; }
-        
-        @media print { 
-            .form-container, .print-btn { display: none !important; } 
-            #output { box-shadow: none; margin: 0; padding: 0; display: block !important; } 
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; font-size: 12pt; }
+            .print-border { border-bottom: 3px solid #1e40af !important; }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
-    <!-- INPUT FORM -->
-    <div class="form-container">
-        <h2>🛡️ Ghar Suraksha Quote Generator</h2>
-        
-        <label>Client Name</label>
-        <input type="text" id="clientName" placeholder="e.g., Shubham Joshi" value="Shubham Joshi">
-        
-        <label>Site Address</label>
-        <input type="text" id="clientAddress" placeholder="e.g., Nagpur" value="Punarvasan Khapri, Nagpur">
-        
-        <label>Contact Number</label>
-        <input type="text" id="clientPhone" placeholder="e.g., +91 XXXXX XXXXX" value="+91 92849 04756">
-        
-        <label>Select Treatments (Select all that apply)</label>
-        <div class="services-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="chkPre" onchange="toggleInputs()" checked> 🧱 Pre-Construction Anti-Termite Protection (₹6/sq.ft)
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="chkPost" onchange="toggleInputs()" checked> 🪵 Post-Construction Anti-Termite Protection (₹7/sq.ft)
-            </label>
-            
-            <!-- Termite Footprint Input Box -->
-            <div id="termiteAreaBox" class="conditional-box" style="display: block;">
-                <label style="margin-top: 0; font-size: 0.9rem;">Total Treatment Area (Sq. Ft.)</label>
-                <input type="number" id="areaSize" value="1500">
+    <!-- Interactive Config Panel (Hidden during print) -->
+    <div class="no-print max-w-4xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <h2 class="text-lg font-black text-slate-900 border-b pb-3 mb-4 uppercase tracking-wide text-blue-600">
+            Salesman Configuration Panel
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-1">Customer Name</label>
+                <input type="text" id="inName" placeholder="e.g., Bhoyar sir" class="w-full border rounded p-2 text-sm focus:outline-none focus:border-blue-500" oninput="updateQuote()">
             </div>
-
-            <label class="checkbox-label" style="margin-top: 15px;">
-                <input type="checkbox" id="chkGpc" onchange="toggleInputs()"> 🐜 General Pest Control Package (BHK-Based Rates)
-            </label>
-            
-            <!-- GPC BHK Dropdown Selection -->
-            <div id="gpcBhkBox" class="conditional-box">
-                <label style="margin-top: 0; font-size: 0.9rem;">Select Property Layout</label>
-                <select id="gpcBhkRate">
-                    <option value="1200">1 BHK / Small Flat (₹1,200)</option>
-                    <option value="1800" selected>2 BHK / Medium Flat (₹1,800)</option>
-                    <option value="2400">3 BHK / Large Flat (₹2,400)</option>
-                    <option value="3200">4 BHK / Independent Villa (₹3,200)</option>
-                </select>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-1">Site Address</label>
+                <input type="text" id="inAddress" placeholder="e.g., Panjari farm" class="w-full border rounded p-2 text-sm focus:outline-none focus:border-blue-500" oninput="updateQuote()">
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-1">Mobile Number</label>
+                <input type="text" id="inMobile" placeholder="8087095680" class="w-full border rounded p-2 text-sm focus:outline-none focus:border-blue-500" oninput="updateQuote()">
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-1">Area Size (Sq. Ft.)</label>
+                <input type="number" id="inArea" placeholder="e.g., 4200" class="w-full border rounded p-2 text-sm focus:outline-none focus:border-blue-500" oninput="updateQuote()">
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-1">Rate per Sq. Ft. (₹)</label>
+                <input type="number" id="inRate" placeholder="e.g., 6" class="w-full border rounded p-2 text-sm focus:outline-none focus:border-blue-500" oninput="updateQuote()">
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-1">Structure Config</label>
+                <input type="text" id="inConfig" placeholder="e.g., G+3 Structure" class="w-full border rounded p-2 text-sm focus:outline-none focus:border-blue-500" oninput="updateQuote()">
             </div>
         </div>
+        
+        <div class="mt-4 flex flex-wrap gap-4 bg-slate-50 p-3 rounded border">
+            <label class="flex items-center space-x-2 text-sm font-semibold text-gray-700">
+                <input type="checkbox" id="chkGPC" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" onchange="updateQuote()">
+                <span>Include Complimentary General Pest Control (GPC)[cite: 3]</span>
+            </label>
+        </div>
 
-        <button onclick="generateQuote()">Generate Custom Quotation</button>
+        <div class="mt-6 flex justify-end space-x-3 border-t pt-4">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded text-sm uppercase tracking-wider transition shadow-sm">
+                Print / Save PDF
+            </button>
+        </div>
     </div>
 
-    <!-- LIVE QUOTATION PREVIEW -->
-    <div style="text-align: center;">
-        <button class="print-btn" id="printButton" style="display:none; max-width:800px; margin: 20px auto;" onclick="window.print()">📥 Save / Print as PDF</button>
-    </div>
-    
-    <div id="output">
-        <div class="quote-header">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="logo.JPG" alt="Ghar Suraksha Logo" style="height: 70px; width: auto;">
-                <div>
-                    <div class="company-title">GHAR SURAKSHA</div>
-                    <small>Advanced Chemical & Structural Protection Solutions</small><br>
-                    <small>Nagpur, Maharashtra | Mob: +91 70588 76498</small>
-                </div>
+    <!-- Live Preview Document Canvas -->
+    <div id="printCanvas" class="max-w-4xl mx-auto my-8 bg-white p-10 shadow-sm border border-gray-200">
+        <!-- Document Header -->
+        <div class="print-border border-b-4 border-blue-600 pb-4 flex justify-between items-start">
+            <div>
+                <div class="text-3xl font-black text-slate-900 tracking-wider">GHAR SURAKSHA</div>
+                <div class="text-sm font-bold text-gray-600 uppercase tracking-wide">Structural Anti-Termite Solutions</div>
             </div>
-            <div style="text-align: right; padding-top: 5px;">
-                <strong>QUOTATION</strong><br>
-                <small>Ref: GS/QT/2026/07-<span id="qRef"></span></small><br>
-                <small>Date: July 11, 2026</small>
+            <div class="text-right text-xs text-gray-500 leading-relaxed">
+                <strong class="text-gray-700">Ghar Suraksha Solutions</strong><br>
+                Nagpur, Maharashtra<br>
+                Mobile: +91 70588764988<br>
+                Email: singhalok657@gmail.com
             </div>
         </div>
 
-        <div style="margin: 20px 0;">
-            <strong>PREPARED FOR:</strong><br>
-            <span id="qName"></span><br>
-            <span id="qAddress"></span><br>
-            <span id="qPhone"></span>
+        <div class="text-center text-lg font-black text-blue-600 my-6 uppercase tracking-widest">
+            Anti-Termite Protection Plan & Quotation
         </div>
 
-        <p><strong>1. TREATMENT SCOPE & STRUCTURAL VITALITY</strong><br>
-        Ghar Suraksha provides scientific, targeted defensive layers to isolate structural elements from biological threats. By combining high-precision structural soil management with modern, non-repellent chemical controls, we build an ironclad perimeter safeguard maximizing your real estate asset lifespan.</p>
+        <!-- Meta Grid -->
+        <div class="grid grid-cols-2 gap-y-2 gap-x-8 text-sm border-b pb-4 mb-6">
+            <div><span class="font-bold text-gray-600">Prepared For:</span> <span id="outName" class="font-bold text-gray-900"></span></div>
+            <div><span class="font-bold text-gray-600">Quote Ref:</span> <span id="outRef" class="font-mono">GS/QT/2026/07-443</span></div>
+            <div><span class="font-bold text-gray-600">Site Address:</span> <span id="outAddress"></span></div>
+            <div><span class="font-bold text-gray-600">Date Issued:</span> <span id="outDate" class="font-medium"></span></div>
+            <div><span class="font-bold text-gray-600">Contact No:</span> <span id="outMobile"></span></div>
+            <div><span class="font-bold text-gray-600">Validity:</span> <span id="outValidity" class="font-medium"></span></div>
+        </div>
 
-        <table class="matrix-table">
-            <thead>
-                <tr>
-                    <th>PROTECTION ZONE & SERVICE DESCRIPTION</th>
-                    <th>COVERAGE AREA</th>
-                    <th>COST ESTIMATE</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- Selected phases dynamically generated here -->
-            </tbody>
-        </table>
+        <!-- Structural Importance Statement -->
+        <div class="mb-6">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-2">1. The Problem & Why Structural Protection Is Vital</h4>
+            <p class="text-xs text-gray-600 leading-relaxed text-justify">
+                Termites live deep underground beneath your property. As a building settles over time, tiny, invisible cracks form inside the foundation, plinth, and brickwork. Termites use these gaps like a private highway to climb straight into your living spaces[cite: 1]. Once inside, they aggressively destroy expensive modular kitchens, luxury wardrobes, and door frames from the inside out. By treating the Post-Construction structures, you create an unbreakable chemical barrier that permanently locks termites out[cite: 1].
+            </p>
+        </div>
 
-        <div class="grand-total">GRAND TOTAL PROJECT ESTIMATE: <span id="qGrandTotal"></span></div>
-        
-        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.85rem; color: #555;">
-            <p><strong>Service Guarantees & Terms:</strong></p>
-            <ul id="warrantyList" style="padding-left: 20px; margin: 5px 0;">
-                <!-- Dynamically populated conditions -->
+        <!-- Scope Statement -->
+        <div class="mb-6">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-2">2. Scope of Work & Area Specifications</h4>
+            <ul class="list-disc pl-5 text-xs text-gray-600 space-y-1">
+                <li><strong>Post-Construction Treatment Zone:</strong> <span id="outScopeArea">0</span> Sq. Ft. (<span id="outScopeConfig"></span> targeting existing floor planes, foundational points, and wall-to-floor junctions)[cite: 1].</li>
             </ul>
-            <p style="margin-top: 10px;"><em>Note: All post-construction tracking access ports are securely resealed with pristine white cement formulas. Payment processing structure applies at 50% initial mobilization milestone and 50% upon physical completion handover.</em></p>
+        </div>
+
+        <!-- Cost Estimation Matrix Table -->
+        <div class="mb-6">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-2">3. Detailed Treatment Matrix & Cost Estimate</h4>
+            <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                    <tr class="bg-blue-600 text-white font-bold">
+                        <th class="p-2 border border-blue-600 uppercase tracking-wider">Stage</th>
+                        <th class="p-2 border border-blue-600 uppercase tracking-wider">Protection Zone & Description</th>
+                        <th class="p-2 border border-blue-600 uppercase tracking-wider">Area Matrix</th>
+                        <th class="p-2 border border-blue-600 uppercase tracking-wider">Cost Estimate</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <tr class="bg-gray-50">
+                        <td class="p-2 border font-bold">STAGE 1</td>
+                        <td class="p-2 border leading-relaxed">
+                            <strong>Primary Wall Junction & Sub-Floor Shield</strong><br>
+                            High-precision drilling (1 foot apart) along internal wall-floor junctions, followed by deep structural chemical injection into the soil base/sub-floor layer. All access points are securely sealed with matching white cement[cite: 1, 3].
+                        </td>
+                        <td class="p-2 border whitespace-nowrap"><span id="outTableArea">0</span> Sq. Ft.</td>
+                        <td class="p-2 border font-bold whitespace-nowrap" id="outTableCost">₹0.00</td>
+                    </tr>
+                    <tr class="bg-slate-100 font-bold text-slate-900">
+                        <td colspan="3" class="p-2 border text-right uppercase tracking-wider">Total Project Estimate:</td>
+                        <td class="p-2 border whitespace-nowrap" id="outGrandTotal">₹0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Complimentary Box Toggle -->
+        <div id="outBonusBox" class="hidden border border-emerald-600 bg-emerald-50 p-3 rounded mb-6 text-xs text-emerald-800">
+            <strong>Exclusive Complimentary Move-In Bonus:</strong> Ghar Suraksha will provide <strong>1 Complete General Pest Control (GPM) Treatment entirely on the house</strong>. This service will be executed right before final handover to ensure the structural space is 100% free from cockroaches, ants, and spiders[cite: 3].
+        </div>
+
+        <!-- Legal Clauses & Warranties -->
+        <div class="mb-8 space-y-3 text-[11px] text-gray-600 leading-relaxed">
+            <p><strong>Terms & Payment Milestones:</strong> 50% mobilization advance due upon authorization to secure chemical asset allocation; 50% completion balance due immediately upon injection finalization and completion of white cement layout handovers[cite: 1].</p>
+            <p><strong>Finishing Clause:</strong> Treatment holes are filled cleanly with white cement[cite: 1]. Custom color paint matching or surface grinding adjustments are to be coordinated by the customer during final cosmetic finishing[cite: 1].</p>
+            <p><strong>Ironclad Service Warranty:</strong> This contract framework delivers a comprehensive <strong>7-Year Structural Service Warranty</strong> including recurring maintenance checks to ensure ongoing safety integrity[cite: 3].</p>
+        </div>
+
+        <!-- Signature Lines -->
+        <div class="pt-8 flex justify-between text-xs font-bold text-gray-700">
+            <div class="border-t border-gray-300 pt-2 text-center w-48">
+                Client Selection Sign-off<br>
+                <span class="text-[9px] font-normal text-gray-400">(Signature & Date)</span>
+            </div>
+            <div class="border-t border-gray-300 pt-2 text-center w-48">
+                Authorized Estimator<br>
+                <span class="text-[9px] font-normal text-gray-400">Ghar Suraksha Solutions</span>
+            </div>
         </div>
     </div>
 
+    <!-- Live Calculation and Date Management JavaScript Engine -->
     <script>
-        function toggleInputs() {
-            const wantPre = document.getElementById('chkPre').checked;
-            const wantPost = document.getElementById('chkPost').checked;
-            const wantGpc = document.getElementById('chkGpc').checked;
+        function setDynamicDates() {
+            const today = new Date();
+            const validityDate = new Date();
+            validityDate.setDate(today.getDate() + 7);
 
-            document.getElementById('termiteAreaBox').style.display = (wantPre || wantPost) ? 'block' : 'none';
-            document.getElementById('gpcBhkBox').style.display = wantGpc ? 'block' : 'none';
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            
+            document.getElementById('outDate').innerText = today.toLocaleDateString('en-IN', options);
+            document.getElementById('outValidity').innerText = validityDate.toLocaleDateString('en-IN', options) + ' (7 Days Validity)';
         }
 
-        function generateQuote() {
-            const name = document.getElementById('clientName').value;
-            const address = document.getElementById('clientAddress').value;
-            const phone = document.getElementById('clientPhone').value;
-            const area = parseFloat(document.getElementById('areaSize').value) || 0;
-            
-            const wantPre = document.getElementById('chkPre').checked;
-            const wantPost = document.getElementById('chkPost').checked;
-            const wantGpc = document.getElementById('chkGpc').checked;
+        function updateQuote() {
+            // Read Inputs
+            const name = document.getElementById('inName').value;
+            const address = document.getElementById('inAddress').value;
+            const mobile = document.getElementById('inMobile').value;
+            const area = parseFloat(document.getElementById('inArea').value) || 0;
+            const rate = parseFloat(document.getElementById('inRate').value) || 0;
+            const config = document.getElementById('inConfig').value || "Structure";
+            const showGPC = document.getElementById('chkGPC').checked;
 
-            if (!wantPre && !wantPost && !wantGpc) {
-                alert("Please select at least one treatment option before generating.");
-                return;
+            // Math Calculation
+            const totalCost = area * rate;
+            const formattedCost = '₹' + totalCost.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Push to Preview UI Layout
+            document.getElementById('outName').innerText = name;
+            document.getElementById('outAddress').innerText = address;
+            document.getElementById('outMobile').innerText = mobile;
+            document.getElementById('outScopeArea').innerText = area.toLocaleString('en-IN');
+            document.getElementById('outScopeConfig').innerText = config;
+            document.getElementById('outTableArea').innerText = area.toLocaleString('en-IN');
+            document.getElementById('outTableCost').innerText = formattedCost;
+            document.getElementById('outGrandTotal').innerText = formattedCost;
+
+            // Handle Complimentary GPC UI Box Toggle
+            const bonusBox = document.getElementById('outBonusBox');
+            if (showGPC) {
+                bonusBox.classList.remove('hidden');
+            } else {
+                bonusBox.classList.add('hidden');
             }
-
-            document.getElementById('qName').innerText = name;
-            document.getElementById('qAddress').innerText = address;
-            document.getElementById('qPhone').innerText = phone;
-            document.getElementById('qRef').innerText = Math.floor(1000 + Math.random() * 9000);
-
-            let tableContent = '';
-            let total = 0;
-            let warranties = [];
-
-            // 1. Pre-Construction Pricing Calculation
-            if (wantPre) {
-                let preCost = area * 6;
-                total += preCost;
-                tableContent += `<tr><td><strong>Phase A: Pre-Construction Shield</strong><br>Deep chemical sub-grade barrier applied into compacted foundation soil structure before final soling floor layers are positioned.</td><td>${area.toLocaleString('en-IN')} Sq.Ft.</td><td>₹${preCost.toLocaleString('en-IN')}.00</td></tr>`;
-                warranties.push("Structural Anti-Termite treatments include comprehensive service warranty protections up to 7 years on combo packages.");
-            }
-
-            // 2. Post-Construction Pricing Calculation (Multiplier completely removed)
-            if (wantPost) {
-                let postCost = area * 7;
-                total += postCost;
-                tableContent += `<tr><td><strong>Phase B: Post-Construction Junction Treatment</strong><br>High-precision technical core-drilling tracking vectors spaced at 1-foot intervals along structural walls with pressure-injection barriers.</td><td>${area.toLocaleString('en-IN')} Sq.Ft.</td><td>₹${postCost.toLocaleString('en-IN')}.00</td></tr>`;
-                if (!wantPre) {
-                    warranties.push("Post-Construction treatments feature full multi-year protective service performance commitments.");
-                }
-            }
-
-            // 3. General Pest Control (BHK-Based Selection)
-            if (wantGpc) {
-                const selectElement = document.getElementById('gpcBhkRate');
-                let gpcCost = parseInt(selectElement.value);
-                let bhkText = selectElement.options[selectElement.selectedIndex].text.split(" (")[0];
-                
-                total += gpcCost;
-                tableContent += `<tr><td><strong>Phase C: Advanced General Pest & Bug Control</strong><br>Integrated nest elimination protocol tracking German cockroaches and crawling infestations using specialized odorless bait gels and barrier perimeter sprays.</td><td>${bhkText}</td><td>₹${gpcCost.toLocaleString('en-IN')}.00</td></tr>`;
-                warranties.push("General Pest Control items include a 1-Year Full Maintenance Shield providing priority follow-up assessments completely on the house.");
-            }
-
-            // Update DOM Output Fields
-            document.getElementById('tableBody').innerHTML = tableContent;
-            document.getElementById('qGrandTotal').innerText = `₹${total.toLocaleString('en-IN')}.00`;
-            
-            // Build out conditions lists
-            let warrantyHtml = '';
-            warranties.forEach(w => warrantyHtml += `<li>${w}</li>`);
-            document.getElementById('warrantyList').innerHTML = warrantyHtml;
-
-            // Make preview container visible
-            document.getElementById('output').style.display = 'block';
-            document.getElementById('printButton').style.display = 'block';
-            
-            window.scrollTo({
-                top: document.getElementById('output').offsetTop - 20,
-                behavior: 'smooth'
-            });
         }
+
+        // Initialize script logic on load
+        window.onload = function() {
+            setDynamicDates();
+            updateQuote();
+        };
     </script>
 </body>
 </html>
