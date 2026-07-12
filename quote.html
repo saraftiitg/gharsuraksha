@@ -20,7 +20,7 @@
     <!-- Salesman Master Control Deck (Hidden during printing) -->
     <div class="no-print max-w-6xl mx-auto my-6 bg-white p-6 rounded-lg shadow-md border border-slate-200">
         <h2 class="text-xl font-black text-slate-900 border-b pb-3 mb-5 uppercase tracking-wide text-blue-600 flex justify-between items-center">
-            <span>Salesman Multi-Service Deck (v5.5 - Commercial Portfolio Update)</span>
+            <span>Salesman Multi-Service Deck (v6.5 - Clear Term Billing Engine)</span>
             <span class="text-xs text-slate-500 font-semibold normal-case">Ghar Suraksha Enterprise System</span>
         </h2>
         
@@ -46,7 +46,7 @@
 
             <!-- Section 2: Core Structural Termite & Residential Matrix -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded border border-slate-200">
-                <!-- Termite Core Controls -->
+                <!-- Termite Core Controls (Base values configured: Pre=6, Post=8) -->
                 <div class="space-y-4">
                     <span class="block text-xs font-black uppercase text-blue-700 tracking-wider">Termite Barriers (Independent Area Fields)</span>
                     
@@ -125,13 +125,13 @@
                 </div>
             </div>
 
-            <!-- Section 3: Advanced Commercial Portfolio Control Module (New Area-Based AMC/Trial Framework) -->
+            <!-- Section 3: High-Value Commercial Portfolio Control Module -->
             <div>
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">3. High-Value Commercial Portfolio Module</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-slate-900 text-white p-4 rounded-xl border border-slate-800">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-900 text-white p-4 rounded-xl border border-slate-800">
                     
-                    <!-- Loopable Commercial Checklists -->
-                    <div class="space-y-2 lg:col-span-1 bg-slate-800 p-3 rounded-lg border border-slate-700">
+                    <!-- Facility Checklist Selector -->
+                    <div class="space-y-2 bg-slate-800 p-3 rounded-lg border border-slate-700">
                         <span class="block text-xs font-black uppercase text-blue-400 tracking-wider mb-2">Select Targeted Facility</span>
                         <div class="space-y-2 text-xs">
                             <label class="flex items-center space-x-2">
@@ -157,41 +157,60 @@
                         </div>
                     </div>
 
-                    <!-- Dynamic Valuation Operational Configurations -->
-                    <div id="commercial_config_block" class="hidden lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-800 p-3 rounded-lg border border-slate-700">
+                    <!-- Operational Setup Configuration Column -->
+                    <div id="comm_ops_block" class="hidden bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-3">
+                        <span class="block text-xs font-black uppercase text-amber-400 tracking-wider">1. Operational Workflow</span>
+                        
                         <div>
-                            <label class="block text-[11px] font-bold uppercase text-slate-300 mb-1">Service Engagement Setup</label>
-                            <select id="inCommMode" class="w-full border bg-slate-900 border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="handleCommercialModeChange()">
-                                <option value="Trial">One-Time Trial Service Run</option>
-                                <option value="AMC">Annual Maintenance Contract (AMC Plan)</option>
+                            <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Contract Execution Mode</label>
+                            <select id="inCommMode" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="handleCommercialModeChange()">
+                                <option value="Trial">One-Time Trial Run</option>
+                                <option value="AMC">Annual Maintenance Contract (AMC)</option>
                             </select>
                         </div>
 
-                        <div id="comm_amc_freq_wrapper" class="hidden">
-                            <label class="block text-[11px] font-bold uppercase text-slate-300 mb-1">AMC Interval Frequency</label>
-                            <select id="inCommAmcFreq" class="w-full border bg-slate-900 border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="updateQuote()">
-                                <option value="Monthly Contract" data-discount="0">Monthly Account Execution (0% Disc)</option>
-                                <option value="Quarterly Contract" data-discount="5">Quarterly Advance Layout (5% Disc)</option>
-                                <option value="Half-Yearly Contract" data-discount="7.5">Half-Yearly Advance Matrix (7.5% Disc)</option>
-                                <option value="Full Year Combo" data-discount="10">Full Year Combo Clearance (10% Disc)</option>
+                        <div id="comm_visit_freq_wrapper" class="hidden">
+                            <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Work Delivery Frequency</label>
+                            <select id="inCommVisitFreq" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="updateQuote()">
+                                <option value="Monthly Delivery Schedule">Monthly Work Delivery</option>
+                                <option value="Bi-Monthly Delivery Schedule">Bi-Monthly Work Delivery</option>
+                                <option value="Quarterly Delivery Schedule">Quarterly Work Delivery</option>
+                                <option value="Half-Yearly Delivery Schedule">Half-Yearly Work Delivery</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Financial Setup Configuration Column (With Split Billing Engine) -->
+                    <div id="comm_finance_block" class="hidden bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-3">
+                        <span class="block text-xs font-black uppercase text-emerald-400 tracking-wider">2. Financial Footprint Matrix</span>
+
+                        <div id="comm_payment_term_wrapper" class="hidden">
+                            <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Payment Installment Schedule</label>
+                            <select id="inCommPaymentTerm" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="updateQuote()">
+                                <option value="Monthly Installment Plan" data-discount="0">Monthly Payments (0% Disc)</option>
+                                <option value="Quarterly Advance Plan" data-discount="5">Quarterly Advance Plan (5% Disc)</option>
+                                <option value="Half-Yearly Advance Plan" data-discount="7.5">Half-Yearly Advance Plan (7.5% Disc)</option>
+                                <option value="Full Year Combo Advance" data-discount="10">Full Upfront Year Combo (10% Disc)</option>
                             </select>
                         </div>
 
-                        <div>
-                            <label class="block text-[11px] font-bold uppercase text-slate-300 mb-1">Combined Account Area Footprint (Sq. Ft.)</label>
-                            <input type="number" id="inCommSqft" placeholder="Enter combined sqft" class="w-full border bg-slate-900 border-slate-700 rounded p-2 text-xs text-center font-bold" oninput="updateQuote()">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Area (Sq. Ft.)</label>
+                                <input type="number" id="inCommSqft" placeholder="Sqft" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs text-center font-bold" oninput="updateQuote()">
+                            </div>
+                            <div>
+                                <label class="block id-label text-[10px] font-bold uppercase text-slate-300 mb-1" id="commPriceInputLabel">Base Term Rate (₹)</label>
+                                <input type="number" id="inCommRate" placeholder="Rate / Cost" step="0.05" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs text-center font-bold text-amber-400" oninput="updateQuote()">
+                            </div>
                         </div>
-
-                        <div>
-                            <label class="block text-[11px] font-bold uppercase text-slate-300 mb-1">Negotiated Rate (₹ / Sq. Ft.)</label>
-                            <input type="number" id="inCommRate" placeholder="e.g. ₹4.50" step="0.05" class="w-full border bg-slate-900 border-slate-700 rounded p-2 text-xs text-center font-bold text-amber-400" oninput="updateQuote()">
-                        </div>
+                        <p class="text-[9px] text-slate-400 leading-tight italic" id="commBillingTip">For Trial: Enter flat cost or sqft rate. For AMC: Enter total base amount for one installment period.</p>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Section 4: Master Lump-Sum Deal Closer (With Custom Brand Discount Reason Dropdown) -->
+            <!-- Section 4: Master Lump-Sum Deal Closer -->
             <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
                 <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-2">4. Final Contract Price Overwrite (Lump-Sum Negotiation)</h3>
                 <div class="flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-6">
@@ -332,7 +351,7 @@
 
         <!-- Legal Clauses & Conditions -->
         <div class="mb-8 space-y-2 text-[10px] text-slate-500 leading-relaxed">
-            <p><strong>Payment Milestone Framework:</strong> 50% mobilization advance due immediately upon deployment authorization; 50% remaining balance due cleanly upon layout handover validation.</p>
+            <p><strong>Payment Milestone Framework:</strong> <span id="outPaymentTermsStatement" class="font-bold text-slate-800">50% mobilization advance due immediately upon authorization; remaining 50% balance due cleanly upon completion.</span></p>
             <p><strong>Institutional Service Warranty Framework:</strong> <span id="outWarrantyStatement" class="font-bold text-slate-800">This contract includes a 5-Year Structural Service Warranty for individual treatments.</span> All standard commercial operations and AMC layouts are governed cleanly by stated framework interval periodic durations.</p>
         </div>
 
@@ -344,7 +363,7 @@
             </div>
             <div class="border-t border-slate-300 pt-2 text-center w-48">
                 Authorized Estimator<br>
-                <span class="text-[9px] font-normal text-slate-400">Ghar Suraksha Solutions</span>
+                <span class="text-[9px] font-normal text-gray-400">Ghar Suraksha Solutions</span>
             </div>
         </div>
     </div>
@@ -375,13 +394,26 @@
                 if (document.getElementById(id).checked) anyCommercialChecked = true;
             });
             
-            document.getElementById('commercial_config_block').classList.toggle('hidden', !anyCommercialChecked);
+            document.getElementById('comm_ops_block').classList.toggle('hidden', !anyCommercialChecked);
+            document.getElementById('comm_finance_block').classList.toggle('hidden', !anyCommercialChecked);
             handleCommercialModeChange();
         }
 
         function handleCommercialModeChange() {
             const mode = document.getElementById('inCommMode').value;
-            document.getElementById('comm_amc_freq_wrapper').classList.toggle('hidden', mode !== 'AMC');
+            const isAmc = (mode === 'AMC');
+            
+            document.getElementById('comm_visit_freq_wrapper').classList.toggle('hidden', !isAmc);
+            document.getElementById('comm_payment_term_wrapper').classList.toggle('hidden', !isAmc);
+            
+            // Adjust input labels live to guide salesmen
+            const labelEl = document.getElementById('commPriceInputLabel');
+            if (isAmc) {
+                labelEl.innerText = "Term Period Price (₹)";
+            } else {
+                labelEl.innerText = "Flat Trial Price (₹)";
+            }
+            
             updateQuote();
         }
 
@@ -460,37 +492,57 @@
 
             // 4. Process Advanced Area-Based Commercial Accounts Matrix Layer
             let commSqft = parseFloat(document.getElementById('inCommSqft').value) || 0;
-            let commRate = parseFloat(document.getElementById('inCommRate').value) || 0;
+            let commInputVal = parseFloat(document.getElementById('inCommRate').value) || 0;
             let commMode = document.getElementById('inCommMode').value;
-            let commBaseCost = commSqft * commRate;
+            let commVisitFreq = document.getElementById('inCommVisitFreq').value;
+            
+            // Treat the input box as the direct baseline term rate
+            let commBaseCost = commInputVal;
+            let commercialActive = false;
+            let currentPaymentTermText = "Upon Completion Milestone";
 
             commercialIds.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.checked) {
+                    commercialActive = true;
                     const name = el.getAttribute('data-name');
                     calculatedTotal += commBaseCost;
                     
-                    let lineTitle = `${name} (${commMode} Run)`;
+                    let lineTitle = commMode === 'AMC' ? `${name} (AMC)` : `${name} (Trial Run)`;
                     let lineDesc = commMode === 'AMC' 
-                        ? `Comprehensive running commercial maintenance coverage targeting high-risk operational zones.` 
+                        ? `Continuous contract maintenance tracking deployment via a customized **${commVisitFreq}** portfolio structure.` 
                         : `Advanced one-time diagnostic treatment run to evaluate corporate environment sanitation structural boundaries.`;
                         
-                    appendLine(lineTitle, lineDesc, `${commSqft.toLocaleString('en-IN')} Sqft @ ₹${commRate}/sqft`, commBaseCost, false);
+                    appendLine(lineTitle, lineDesc, commSqft > 0 ? `${commSqft.toLocaleString('en-IN')} Sqft Scope` : `Corporate Facility Account`, commBaseCost, false);
                     
-                    // Layer Automated AMC Frequency Discounts for corporate accounts dynamically
+                    // Layer Automated AMC Payment Schedule Discounts independently
                     if (commMode === 'AMC') {
-                        const selectFreq = document.getElementById('inCommAmcFreq');
-                        const amcFreqText = selectFreq.value;
-                        const amcDiscountPct = parseFloat(selectFreq.options[selectFreq.selectedIndex].getAttribute('data-discount')) || 0;
+                        const selectTerm = document.getElementById('inCommPaymentTerm');
+                        currentPaymentTermText = selectTerm.value;
+                        const amcDiscountPct = parseFloat(selectTerm.options[selectTerm.selectedIndex].getAttribute('data-discount')) || 0;
                         
                         if (amcDiscountPct > 0) {
                             let amcTermSavings = commBaseCost * (amcDiscountPct / 100);
                             calculatedTotal -= amcTermSavings;
-                            appendLine(`Commercial AMC Term Savings (${amcDiscountPct}%)`, `Promotional volume incentive reduction applied for selecting the advanced ${amcFreqText} framework structure.`, `Frequency Deduction`, -amcTermSavings, true);
+                            appendLine(`Commercial Term Incentive Adjustment (${amcDiscountPct}%)`, `Promotional volume incentive reduction applied for selecting the advanced ${currentPaymentTermText} billing cycle.`, `Term Deduction`, -amcTermSavings, true);
                         }
                     }
                 }
             });
+
+            // Update Payment Due Disclaimer Text Block Live based on settings
+            const paymentTermsStatementEl = document.getElementById('outPaymentTermsStatement');
+            if (commercialActive && commMode === 'AMC') {
+                let displayTermName = "Cycle Block";
+                if (currentPaymentTermText.includes("Monthly")) displayTermName = "Month";
+                if (currentPaymentTermText.includes("Quarterly")) displayTermName = "Quarter";
+                if (currentPaymentTermText.includes("Half-Yearly")) displayTermName = "Half-Year";
+                if (currentPaymentTermText.includes("Full Year")) displayTermName = "Year";
+                
+                paymentTermsStatementEl.innerText = `AMC Billing Framework: Stated package amount is due cleanly in advance at the beginning of each recurring ${displayTermName} lifecycle block.`;
+            } else {
+                paymentTermsStatementEl.innerText = "Standard Milestone Framework: 50% mobilization advance due immediately upon authorization; remaining 50% balance due cleanly upon layout completion handover validation.";
+            }
 
             document.getElementById('refCalcTotal').innerText = '₹' + calculatedTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
 
