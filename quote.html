@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +66,7 @@
             
             <!-- Termite Footprint Input Box -->
             <div id="termiteAreaBox" class="conditional-box" style="display: block;">
-                <label style="margin-top: 0; font-size: 0.9rem;">Property Footprint Area (Sq. Ft.)</label>
+                <label style="margin-top: 0; font-size: 0.9rem;">Total Treatment Area (Sq. Ft.)</label>
                 <input type="number" id="areaSize" value="1500">
             </div>
 
@@ -186,12 +187,11 @@
                 warranties.push("Structural Anti-Termite treatments include comprehensive service warranty protections up to 7 years on combo packages.");
             }
 
-            // 2. Post-Construction Pricing Calculation (Original Footprint Multiplier Kept)
+            // 2. Post-Construction Pricing Calculation (Multiplier completely removed)
             if (wantPost) {
-                let postArea = area * 2; 
-                let postCost = postArea * 7;
+                let postCost = area * 7;
                 total += postCost;
-                tableContent += `<tr><td><strong>Phase B: Post-Construction Junction Treatment</strong><br>High-precision technical core-drilling tracking vectors spaced at 1-foot intervals along structural walls with pressure-injection barriers.</td><td>${postArea.toLocaleString('en-IN')} Sq.Ft.</td><td>₹${postCost.toLocaleString('en-IN')}.00</td></tr>`;
+                tableContent += `<tr><td><strong>Phase B: Post-Construction Junction Treatment</strong><br>High-precision technical core-drilling tracking vectors spaced at 1-foot intervals along structural walls with pressure-injection barriers.</td><td>${area.toLocaleString('en-IN')} Sq.Ft.</td><td>₹${postCost.toLocaleString('en-IN')}.00</td></tr>`;
                 if (!wantPre) {
                     warranties.push("Post-Construction treatments feature full multi-year protective service performance commitments.");
                 }
