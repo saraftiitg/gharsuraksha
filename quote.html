@@ -8,7 +8,7 @@
     <style>
         @media print {
             .no-print { display: none !important; }
-            body { background: white; color: black; font-size: 11pt; }
+            body { background: white; color: black; font-size: 10pt; }
             .print-border { border-bottom: 3px solid #1e40af !important; }
             .matrix-table th { background-color: #1e40af !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .total-row { background-color: #f1f5f9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -20,7 +20,7 @@
     <!-- Salesman Master Control Deck -->
     <div class="no-print max-w-6xl mx-auto my-6 bg-white p-6 rounded-lg shadow-md border border-slate-200">
         <h2 class="text-xl font-black text-slate-900 border-b pb-3 mb-5 uppercase tracking-wide text-blue-600 flex justify-between items-center">
-            <span>Salesman Multi-Service Deck (v7.2 - Chemical Privacy Engine)</span>
+            <span>Salesman Control Deck (v10.0 - Master Complete Engine)</span>
             <span class="text-xs text-slate-500 font-semibold normal-case">Ghar Suraksha Enterprise System</span>
         </h2>
         
@@ -44,108 +44,159 @@
                 </div>
             </div>
 
-            <!-- Section 2: Core Termite, Ply Treatment & Residential Matrix -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded border border-slate-200">
+            <!-- Section 2: Termite, Wood & Specialized Pest Services -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded border border-slate-200">
                 
-                <!-- Termite Core Controls + PLYWOOD MODULE -->
-                <div class="space-y-4">
-                    <span class="block text-xs font-black uppercase text-blue-700 tracking-wider">Termite & Wood Protection Barriers</span>
+                <!-- Col 1: Termite & Ply -->
+                <div class="space-y-3">
+                    <span class="block text-xs font-black uppercase text-blue-700 tracking-wider">Termite & Wood Protection</span>
                     
-                    <!-- Pre-Construction Shield -->
                     <div class="space-y-2 p-2 bg-white rounded border">
                         <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
-                            <input type="checkbox" id="svc_termite_pre" data-type="sqft" data-rate="6" data-name="Pre-Construction Structural Shield" onchange="toggleInputs()">
-                            <span>Pre-Construction Shield (Base: ₹6/sqft)</span>
+                            <input type="checkbox" id="svc_termite_pre" data-name="Pre-Construction Structural Shield" onchange="toggleInputs()">
+                            <span>Pre-Construction Shield (₹6/sqft)</span>
                         </label>
-                        <div id="block_svc_termite_pre" class="hidden space-y-2 pt-2 border-t mt-1">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-16">Area Sqft:</span>
-                                <input type="number" id="sqft_val_svc_termite_pre" placeholder="Area" class="w-full border rounded p-1 text-xs" oninput="updateQuote()">
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-16">Rate (₹):</span>
-                                <input type="number" id="rate_val_svc_termite_pre" value="6" step="0.1" class="w-full border rounded p-1 text-xs text-blue-600 font-bold" oninput="updateQuote()">
-                            </div>
+                        <div id="block_svc_termite_pre" class="hidden space-y-1.5 pt-2 border-t text-xs">
+                            <input type="number" id="sqft_val_svc_termite_pre" placeholder="Area Sqft" class="w-full border rounded p-1" oninput="updateQuote()">
+                            <input type="number" id="rate_val_svc_termite_pre" value="6" class="w-full border rounded p-1 text-blue-600 font-bold" oninput="updateQuote()">
                         </div>
                     </div>
 
-                    <!-- Post-Construction Shield -->
                     <div class="space-y-2 p-2 bg-white rounded border">
                         <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
-                            <input type="checkbox" id="svc_termite_post" data-type="sqft" data-rate="8" data-name="Post-Construction Anti-Termite Treatment" onchange="toggleInputs()">
-                            <span>Post-Construction Shield (Base: ₹8/sqft)</span>
+                            <input type="checkbox" id="svc_termite_post" data-name="Post-Construction Anti-Termite Treatment" onchange="toggleInputs()">
+                            <span>Post-Construction Shield (₹8/sqft)</span>
                         </label>
-                        <div id="block_svc_termite_post" class="hidden space-y-2 pt-2 border-t mt-1">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-16">Area Sqft:</span>
-                                <input type="number" id="sqft_val_svc_termite_post" placeholder="Area" class="w-full border rounded p-1 text-xs" oninput="updateQuote()">
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-16">Rate (₹):</span>
-                                <input type="number" id="rate_val_svc_termite_post" value="8" step="0.1" class="w-full border rounded p-1 text-xs text-blue-600 font-bold" oninput="updateQuote()">
-                            </div>
+                        <div id="block_svc_termite_post" class="hidden space-y-1.5 pt-2 border-t text-xs">
+                            <input type="number" id="sqft_val_svc_termite_post" placeholder="Area Sqft" class="w-full border rounded p-1" oninput="updateQuote()">
+                            <input type="number" id="rate_val_svc_termite_post" value="8" class="w-full border rounded p-1 text-blue-600 font-bold" oninput="updateQuote()">
                         </div>
                     </div>
 
-                    <!-- Plywood / Furniture Deep Treatment Checkbox -->
                     <div class="space-y-2 p-2 bg-amber-50/60 rounded border border-amber-200">
                         <label class="flex items-center space-x-2 text-xs font-bold text-amber-900">
-                            <input type="checkbox" id="svc_ply_treatment" data-name="Plywood / Woodwork Termite Deep-Treatment" onchange="toggleInputs()">
-                            <span>Plywood Chemical Treatment (Per Sheet Rate)</span>
+                            <input type="checkbox" id="svc_ply_treatment" data-name="Plywood / Furniture Chemical Deep-Treatment" onchange="toggleInputs()">
+                            <span>Ply Chemical Treatment</span>
                         </label>
-                        <div id="block_svc_ply_treatment" class="hidden space-y-2 pt-2 border-t border-amber-200 mt-1">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-600 w-24">No. of Plys (Sheets):</span>
-                                <input type="number" id="ply_count_val" placeholder="e.g. 25" class="w-full border rounded p-1 text-xs font-bold" oninput="updateQuote()">
+                        <div id="block_svc_ply_treatment" class="hidden space-y-1.5 pt-2 border-t border-amber-200 text-xs">
+                            <input type="number" id="ply_count_val" placeholder="No. of Plys (Sheets)" class="w-full border rounded p-1 font-bold" oninput="updateQuote()">
+                            <input type="number" id="ply_rate_val" value="150" class="w-full border rounded p-1 text-amber-700 font-bold" oninput="updateQuote()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Bed Bugs, Rodents & Wood Borer -->
+                <div class="space-y-3">
+                    <span class="block text-xs font-black uppercase text-purple-700 tracking-wider">Bed Bugs & Wood Borer</span>
+                    
+                    <div class="space-y-2 p-2 bg-purple-50/60 rounded border border-purple-200">
+                        <label class="flex items-center space-x-2 text-xs font-bold text-purple-900">
+                            <input type="checkbox" id="svc_bedbugs" data-name="Bed Bugs Extermination (2-Visit Cycle)" onchange="toggleInputs()">
+                            <span>Bed Bugs Extermination</span>
+                        </label>
+                        <div id="block_svc_bedbugs" class="hidden space-y-1.5 pt-2 border-t border-purple-200 text-xs">
+                            <div class="flex space-x-1">
+                                <input type="number" id="bedbug_rooms" placeholder="Rooms / Beds" class="w-1/2 border rounded p-1 font-bold" oninput="updateQuote()">
+                                <input type="number" id="bedbug_rate" value="1200" class="w-1/2 border rounded p-1 text-purple-700 font-bold" oninput="updateQuote()">
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-600 w-24">Rate per Ply (₹):</span>
-                                <input type="number" id="ply_rate_val" value="150" step="5" class="w-full border rounded p-1 text-xs text-amber-700 font-bold" oninput="updateQuote()">
-                            </div>
-                            <p class="text-[9px] text-slate-500 italic">Dynamic calculation based on carpenter's ply count sheet inputs.</p>
+                            <select id="bedbug_type" class="w-full border rounded p-1 bg-white" onchange="updateQuote()">
+                                <option value="Chemical Spray & Steam Matrix">Chemical + Thermal Steam</option>
+                                <option value="Standard Chemical Eradication">Standard Chemical Spray</option>
+                            </select>
                         </div>
                     </div>
 
+                    <div class="space-y-2 p-2 bg-white rounded border">
+                        <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
+                            <input type="checkbox" id="svc_woodborer" data-name="Wood Borer / Powder Beetle Treatment" onchange="toggleInputs()">
+                            <span>Wood Borer Treatment</span>
+                        </label>
+                        <div id="block_svc_woodborer" class="hidden space-y-1.5 pt-2 border-t text-xs">
+                            <input type="number" id="woodborer_flat_rate" value="2500" placeholder="Flat Rate (₹)" class="w-full border rounded p-1 font-bold text-blue-600" oninput="updateQuote()">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 p-2 bg-white rounded border">
+                        <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
+                            <input type="checkbox" id="svc_rodent" data-name="Rodent & Rat Control Baiting System" onchange="toggleInputs()">
+                            <span>Rodent Control & Proofing</span>
+                        </label>
+                        <div id="block_svc_rodent" class="hidden space-y-1.5 pt-2 border-t text-xs">
+                            <input type="number" id="rodent_flat_rate" value="1800" placeholder="Flat Rate (₹)" class="w-full border rounded p-1 font-bold text-blue-600" oninput="updateQuote()">
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Domestic General Pest Control Flats -->
+                <!-- Col 3: GPC Packages & Bird Netting -->
                 <div class="space-y-3">
-                    <span class="block text-xs font-black uppercase text-blue-700 tracking-wider">Domestic GPC & Fixed Packages</span>
+                    <span class="block text-xs font-black uppercase text-emerald-700 tracking-wider">GPC & Bird Netting</span>
                     
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="p-2 bg-white rounded border">
-                            <label class="flex items-center space-x-1.5 text-xs font-medium">
-                                <input type="checkbox" id="svc_gpc_1bhk" data-type="flat" data-rate="1000" data-name="General Pest Control: 1 BHK Flat" onchange="toggleInputs()">
+                    <div class="space-y-2 bg-white p-2 rounded border text-xs">
+                        <span class="font-bold text-slate-700 block border-b pb-1">Domestic General Pest Packages</span>
+                        
+                        <div class="space-y-1">
+                            <label class="flex items-center space-x-1.5 font-medium">
+                                <input type="checkbox" id="svc_gpc_1bhk" data-name="General Pest Control: 1 BHK Flat" onchange="toggleInputs()">
                                 <span>1 BHK Package</span>
                             </label>
-                            <div id="rate_block_svc_gpc_1bhk" class="hidden mt-1 flex items-center space-x-1"><span class="text-[9px] text-slate-500">₹</span><input type="number" id="rate_val_svc_gpc_1bhk" value="1000" class="w-full border rounded p-0.5 text-[11px] text-center font-bold text-blue-600" oninput="updateQuote()"></div>
+                            <div id="block_svc_gpc_1bhk" class="hidden grid grid-cols-2 gap-1 pt-1 pl-4">
+                                <input type="number" id="sqft_svc_gpc_1bhk" placeholder="Area Sqft" class="border rounded p-1 text-[11px]" oninput="updateQuote()">
+                                <input type="number" id="rate_svc_gpc_1bhk" value="1000" placeholder="Price (₹)" class="border rounded p-1 text-[11px] font-bold text-blue-600" oninput="updateQuote()">
+                            </div>
                         </div>
 
-                        <div class="p-2 bg-white rounded border">
-                            <label class="flex items-center space-x-1.5 text-xs font-medium">
-                                <input type="checkbox" id="svc_gpc_2bhk" data-type="flat" data-rate="1500" data-name="General Pest Control: 2 BHK Flat" onchange="toggleInputs()">
+                        <div class="space-y-1">
+                            <label class="flex items-center space-x-1.5 font-medium">
+                                <input type="checkbox" id="svc_gpc_2bhk" data-name="General Pest Control: 2 BHK Flat" onchange="toggleInputs()">
                                 <span>2 BHK Package</span>
                             </label>
-                            <div id="rate_block_svc_gpc_2bhk" class="hidden mt-1 flex items-center space-x-1"><span class="text-[9px] text-slate-500">₹</span><input type="number" id="rate_val_svc_gpc_2bhk" value="1500" class="w-full border rounded p-0.5 text-[11px] text-center font-bold text-blue-600" oninput="updateQuote()"></div>
+                            <div id="block_svc_gpc_2bhk" class="hidden grid grid-cols-2 gap-1 pt-1 pl-4">
+                                <input type="number" id="sqft_svc_gpc_2bhk" placeholder="Area Sqft" class="border rounded p-1 text-[11px]" oninput="updateQuote()">
+                                <input type="number" id="rate_svc_gpc_2bhk" value="1500" placeholder="Price (₹)" class="border rounded p-1 text-[11px] font-bold text-blue-600" oninput="updateQuote()">
+                            </div>
                         </div>
 
-                        <div class="p-2 bg-white rounded border">
-                            <label class="flex items-center space-x-1.5 text-xs font-medium">
-                                <input type="checkbox" id="svc_gpc_3bhk" data-type="flat" data-rate="2200" data-name="General Pest Control: 3 BHK Flat" onchange="toggleInputs()">
+                        <div class="space-y-1">
+                            <label class="flex items-center space-x-1.5 font-medium">
+                                <input type="checkbox" id="svc_gpc_3bhk" data-name="General Pest Control: 3 BHK Flat" onchange="toggleInputs()">
                                 <span>3 BHK Package</span>
                             </label>
-                            <div id="rate_block_svc_gpc_3bhk" class="hidden mt-1 flex items-center space-x-1"><span class="text-[9px] text-slate-500">₹</span><input type="number" id="rate_val_svc_gpc_3bhk" value="2200" class="w-full border rounded p-0.5 text-[11px] text-center font-bold text-blue-600" oninput="updateQuote()"></div>
+                            <div id="block_svc_gpc_3bhk" class="hidden grid grid-cols-2 gap-1 pt-1 pl-4">
+                                <input type="number" id="sqft_svc_gpc_3bhk" placeholder="Area Sqft" class="border rounded p-1 text-[11px]" oninput="updateQuote()">
+                                <input type="number" id="rate_svc_gpc_3bhk" value="2200" placeholder="Price (₹)" class="border rounded p-1 text-[11px] font-bold text-blue-600" oninput="updateQuote()">
+                            </div>
                         </div>
 
-                        <div class="p-2 bg-white rounded border">
-                            <label class="flex items-center space-x-1.5 text-xs font-medium">
-                                <input type="checkbox" id="svc_gpc_villa" data-type="flat" data-rate="4000" data-name="General Pest Control: Luxury Villa" onchange="toggleInputs()">
-                                <span>Luxury Villa</span>
+                        <div class="space-y-1">
+                            <label class="flex items-center space-x-1.5 font-medium">
+                                <input type="checkbox" id="svc_gpc_villa" data-name="General Pest Control: Luxury Villa" onchange="toggleInputs()">
+                                <span>Luxury Villa Package</span>
                             </label>
-                            <div id="rate_block_svc_gpc_villa" class="hidden mt-1 flex items-center space-x-1"><span class="text-[9px] text-slate-500">₹</span><input type="number" id="rate_val_svc_gpc_villa" value="4000" class="w-full border rounded p-0.5 text-[11px] text-center font-bold text-blue-600" oninput="updateQuote()"></div>
+                            <div id="block_svc_gpc_villa" class="hidden grid grid-cols-2 gap-1 pt-1 pl-4">
+                                <input type="number" id="sqft_svc_gpc_villa" placeholder="Area Sqft" class="border rounded p-1 text-[11px]" oninput="updateQuote()">
+                                <input type="number" id="rate_svc_gpc_villa" value="4000" placeholder="Price (₹)" class="border rounded p-1 text-[11px] font-bold text-blue-600" oninput="updateQuote()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 p-2 bg-emerald-50/60 rounded border border-emerald-200">
+                        <label class="flex items-center space-x-2 text-xs font-bold text-emerald-900">
+                            <input type="checkbox" id="svc_birdnetting" data-name="Anti-Bird & Pigeon Netting Installation" onchange="toggleInputs()">
+                            <span>Bird / Pigeon Netting</span>
+                        </label>
+                        <div id="block_svc_birdnetting" class="hidden space-y-1.5 pt-2 border-t border-emerald-200 text-xs">
+                            <div class="flex space-x-1">
+                                <input type="number" id="birdnet_sqft" placeholder="Net Area (Sqft)" class="w-1/2 border rounded p-1 font-bold" oninput="updateQuote()">
+                                <input type="number" id="birdnet_rate" value="35" class="w-1/2 border rounded p-1 text-emerald-700 font-bold" oninput="updateQuote()">
+                            </div>
+                            <select id="birdnet_type" class="w-full border rounded p-1 bg-white text-[11px]" onchange="updateQuote()">
+                                <option value="Garware Garfil Nylon Net (HDPE)">Garware Nylon Net (HDPE)</option>
+                                <option value="SS Wire Mesh Anti-Bird Barrier">SS Wire Mesh Barrier</option>
+                            </select>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Section 3: High-Value Commercial Portfolio Control Module -->
@@ -153,152 +204,158 @@
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">3. High-Value Commercial Portfolio Module</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-900 text-white p-4 rounded-xl border border-slate-800">
                     
-                    <!-- Facility Checklist Selector -->
                     <div class="space-y-2 bg-slate-800 p-3 rounded-lg border border-slate-700">
                         <span class="block text-xs font-black uppercase text-blue-400 tracking-wider mb-2">Select Targeted Facility</span>
                         <div class="space-y-2 text-xs">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="comm_building" data-name="Commercial Building (Common Areas)" onchange="toggleCommercialFields()">
-                                <span>Building (Common Area)</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="comm_restaurant" data-name="Commercial Restaurant Setup" onchange="toggleCommercialFields()">
-                                <span>Restaurant Layout</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="comm_hospital" data-name="Healthcare Facility / Hospital Wing" onchange="toggleCommercialFields()">
-                                <span>Hospital Wing Matrix</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="comm_builder" data-name="Premium Builder Project Zone" onchange="toggleCommercialFields()">
-                                <span>Builder Project Account</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="comm_hotel" data-name="Hospitality Infrastructure / Hotel Space" onchange="toggleCommercialFields()">
-                                <span>Hotel (Total Area Account)</span>
-                            </label>
+                            <label class="flex items-center space-x-2"><input type="checkbox" id="comm_building" data-name="Commercial Building (Common Areas)" onchange="toggleCommercialFields()"><span>Building (Common Area)</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox" id="comm_restaurant" data-name="Commercial Restaurant Setup" onchange="toggleCommercialFields()"><span>Restaurant Layout</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox" id="comm_hospital" data-name="Healthcare Facility / Hospital Wing" onchange="toggleCommercialFields()"><span>Hospital Wing Matrix</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox" id="comm_builder" data-name="Premium Builder Project Zone" onchange="toggleCommercialFields()"><span>Builder Project Account</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox" id="comm_hotel" data-name="Hospitality Infrastructure / Hotel Space" onchange="toggleCommercialFields()"><span>Hotel (Total Area)</span></label>
                         </div>
                     </div>
 
-                    <!-- Operational Setup Configuration -->
                     <div id="comm_ops_block" class="hidden bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-3">
                         <span class="block text-xs font-black uppercase text-amber-400 tracking-wider">1. Operational Workflow</span>
-                        
                         <div>
-                            <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Contract Execution Mode</label>
-                            <select id="inCommMode" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="handleCommercialModeChange()">
+                            <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Contract Mode</label>
+                            <select id="inCommMode" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs" onchange="handleCommercialModeChange()">
                                 <option value="Trial">One-Time Trial Run</option>
                                 <option value="AMC">Annual Maintenance Contract (AMC)</option>
                             </select>
                         </div>
-
                         <div id="comm_visit_freq_wrapper" class="hidden">
                             <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Work Delivery Frequency</label>
-                            <select id="inCommVisitFreq" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="updateQuote()">
+                            <select id="inCommVisitFreq" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs" onchange="updateQuote()">
                                 <option value="Monthly Delivery Schedule">Monthly Work Delivery</option>
-                                <option value="Bi-Monthly Delivery Schedule">Bi-Monthly Work Delivery</option>
-                                <option value="Quarterly Delivery Schedule">Quarterly Work Delivery</option>
-                                <option value="Half-Yearly Delivery Schedule">Half-Yearly Work Delivery</option>
+                                <option value="Bi-Monthly Delivery Schedule">Bi-Monthly Delivery</option>
+                                <option value="Quarterly Delivery Schedule">Quarterly Delivery</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Financial Setup & Optional Chemical Specification -->
                     <div id="comm_finance_block" class="hidden bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-3">
                         <span class="block text-xs font-black uppercase text-emerald-400 tracking-wider">2. Financial & Chemical Specs</span>
-
                         <div id="comm_payment_term_wrapper" class="hidden">
-                            <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Payment Installment Schedule</label>
-                            <select id="inCommPaymentTerm" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none" onchange="updateQuote()">
+                            <select id="inCommPaymentTerm" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs" onchange="updateQuote()">
                                 <option value="Monthly Installment Plan" data-discount="0">Monthly Payments (0% Disc)</option>
-                                <option value="Quarterly Advance Plan" data-discount="5">Quarterly Advance Plan (5% Disc)</option>
-                                <option value="Half-Yearly Advance Plan" data-discount="7.5">Half-Yearly Advance Plan (7.5% Disc)</option>
-                                <option value="Full Year Combo Advance" data-discount="10">Full Upfront Year Combo (10% Disc)</option>
+                                <option value="Quarterly Advance Plan" data-discount="5">Quarterly Advance (5% Disc)</option>
+                                <option value="Half-Yearly Advance Plan" data-discount="7.5">Half-Yearly Advance (7.5% Disc)</option>
+                                <option value="Full Year Combo Advance" data-discount="10">Full Upfront Year (10% Disc)</option>
                             </select>
                         </div>
-
                         <div class="grid grid-cols-2 gap-2">
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Area (Sq. Ft.)</label>
-                                <input type="number" id="inCommSqft" placeholder="Sqft" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs text-center font-bold" oninput="updateQuote()">
-                            </div>
-                            <div>
-                                <label class="block id-label text-[10px] font-bold uppercase text-slate-300 mb-1" id="commPriceInputLabel">Base Term Rate (₹)</label>
-                                <input type="number" id="inCommRate" placeholder="Rate / Cost" step="0.05" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs text-center font-bold text-amber-400" oninput="updateQuote()">
-                            </div>
+                            <input type="number" id="inCommSqft" placeholder="Sqft Area" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs font-bold" oninput="updateQuote()">
+                            <input type="number" id="inCommRate" placeholder="Rate / Cost" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs font-bold text-amber-400" oninput="updateQuote()">
                         </div>
-
-                        <!-- NEW: Optional Chemical Name Toggle for Corporate Bids -->
-                        <div class="border-t border-slate-700 pt-2 mt-2">
+                        <div class="border-t border-slate-700 pt-2">
                             <label class="flex items-center space-x-2 text-[11px] font-semibold text-blue-300 cursor-pointer">
                                 <input type="checkbox" id="chkShowChemical" onchange="toggleChemicalInput()">
-                                <span>Specify Chemical Name (For Corporate PDF)</span>
+                                <span>Specify Chemical (For Corporate Bids)</span>
                             </label>
                             <div id="chemical_input_wrapper" class="hidden mt-2">
-                                <input type="text" id="inChemicalName" placeholder="e.g. Imidacloprid 30.5% SC / Chlorpyrifos" class="w-full bg-slate-900 border border-slate-700 rounded p-1.5 text-xs text-amber-300 focus:outline-none" oninput="updateQuote()">
-                                <p class="text-[8px] text-slate-400 mt-1 italic">Leave unchecked for general public quotes to protect chemical privacy.</p>
+                                <input type="text" id="inChemicalName" placeholder="e.g. Imidacloprid 30.5% SC" class="w-full bg-slate-900 border border-slate-700 rounded p-1 text-xs text-amber-300" oninput="updateQuote()">
                             </div>
                         </div>
-
                     </div>
 
                 </div>
             </div>
 
-            <!-- Section 4: Master Lump-Sum Deal Closer -->
-            <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-2">4. Final Contract Price Overwrite (Lump-Sum Negotiation)</h3>
-                <div class="flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-6">
-                    <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
+            <!-- Section 4: Master Payment Collection Schedule Engine -->
+            <div class="bg-blue-50/80 border border-blue-200 p-4 rounded-lg space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-blue-900 flex justify-between items-center">
+                    <span>4. Payment Expectation & Collection Schedule</span>
+                    <span class="text-[10px] text-blue-600 font-semibold normal-case">Configure how payment is collected from client</span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Collection Mode / Milestone Structure</label>
+                        <select id="inPaymentStructure" class="w-full border bg-white rounded p-1.5 text-xs focus:ring-1 focus:ring-blue-500" onchange="updateQuote()">
+                            <option value="50_50">50% Mobilization Advance + 50% Handover</option>
+                            <option value="100_ADV">100% Upfront Advance Required</option>
+                            <option value="40_40_20">3-Stage: 40% Adv / 40% Mid-Work / 20% Final</option>
+                            <option value="CUSTOM">Custom Percentage Split</option>
+                        </select>
+                    </div>
+
+                    <div id="custom_payment_wrapper" class="hidden flex space-x-2 items-center">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Advance %</label>
+                            <input type="number" id="inCustomAdvPct" value="30" class="border bg-white rounded p-1 text-xs text-center font-bold w-16" oninput="updateQuote()">
+                        </div>
+                        <div class="pt-3 text-xs font-bold text-slate-400">+</div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Handover %</label>
+                            <input type="number" id="inCustomBalPct" value="70" class="border bg-white rounded p-1 text-xs text-center font-bold w-16" oninput="updateQuote()">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Accepted Payment Channels</label>
+                        <select id="inPaymentChannel" class="w-full border bg-white rounded p-1.5 text-xs focus:ring-1 focus:ring-blue-500" onchange="updateQuote()">
+                            <option value="UPI / GPay / PhonePe / Bank Transfer / Cash">UPI / Online Transfer / Cash</option>
+                            <option value="Account Payee Cheque / NEFT / RTGS Only">Account Payee Cheque / NEFT / RTGS</option>
+                            <option value="Strictly Online Bank Transfer / UPI">Strictly Digital (UPI / NEFT)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Lump Sum & GST Row WITH LIVE SYSTEM BASELINE DISPLAY -->
+                <div class="border-t border-blue-200 pt-3 flex flex-wrap items-center gap-4">
+                    <label class="flex items-center space-x-2 text-xs font-bold text-slate-700 cursor-pointer">
                         <input type="checkbox" id="chkLumpSumActive" onchange="toggleLumpSum()">
-                        <span>Enable Custom Flat Package Deal Amount</span>
+                        <span>Enable Lump-Sum Overwrite</span>
                     </label>
-                    
-                    <div id="lump_sum_input_block" class="hidden flex flex-wrap items-center gap-4">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs font-black text-slate-700">Final Agreed Amount: ₹</span>
-                            <input type="number" id="inLumpSumVal" placeholder="e.g. 24000" class="border bg-white rounded p-1.5 text-sm font-black text-blue-700 focus:outline-none w-40" oninput="updateQuote()">
-                        </div>
 
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold text-slate-700">Discount Reason Tag:</span>
-                            <select id="inDiscountTag" class="border bg-white rounded p-1.5 text-xs focus:outline-none" onchange="updateQuote()">
-                                <option value="Orange City Festival Offer">Orange City Festival Offer</option>
-                                <option value="Monsoon Mud Shield Discount">Monsoon Mud Shield Discount</option>
-                                <option value="Diwali Laxmi Premium Benefit">Diwali Laxmi Premium Benefit</option>
-                                <option value="Pioneer Corporate Volume Benefit">Pioneer Corporate Volume Benefit</option>
-                                <option value="Combo Structural Bundle Adjustment">Combo Integration Discount</option>
-                                <option value="Legacy Client Account Adjustment">Legacy Client Account Adjustment</option>
-                            </select>
-                        </div>
-                        
-                        <div class="text-xs bg-slate-200/80 px-3 py-1.5 rounded text-slate-700 font-semibold">
-                            System Calculated: <span id="refCalcTotal" class="font-bold text-slate-900">₹0.00</span>
-                        </div>
-                        <div id="refDiscountBlock" class="text-xs bg-emerald-100 text-emerald-800 px-3 py-1.5 rounded font-bold hidden">
-                            Calculated Saved Variance: <span id="refDiscountVal">₹0.00</span>
-                        </div>
+                    <!-- System Baseline Live Badge -->
+                    <div id="liveBaseBadge" class="text-xs bg-slate-200 text-slate-800 px-2.5 py-1 rounded-md font-bold flex items-center space-x-1 border border-slate-300">
+                        <span class="text-slate-500 uppercase text-[9px] tracking-wider">System Baseline (Pre-Tax):</span>
+                        <span id="txtLiveSubtotal" class="text-blue-800 font-black">₹0.00</span>
+                    </div>
+
+                    <label class="flex items-center space-x-2 text-xs font-bold text-blue-900 bg-blue-100 px-3 py-1.5 rounded border border-blue-300">
+                        <input type="checkbox" id="chkApplyGST" onchange="updateQuote()">
+                        <span>Apply GST Breakdown (18% Tax)</span>
+                    </label>
+                </div>
+
+                <!-- Expanded Lump Sum Negotiation Bar -->
+                <div id="lump_sum_input_block" class="hidden flex flex-wrap items-center gap-4 border-t border-blue-200 pt-3 bg-blue-100/50 p-2.5 rounded-md">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-black text-slate-700">Agreed Base Deal Value: ₹</span>
+                        <input type="number" id="inLumpSumVal" placeholder="e.g. 24000" class="border bg-white rounded p-1 text-sm font-black text-blue-700 w-36 focus:outline-none" oninput="updateQuote()">
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold text-slate-600">Concession Tag:</span>
+                        <select id="inDiscountTag" class="border bg-white rounded p-1 text-xs" onchange="updateQuote()">
+                            <option value="Orange City Festival Offer">Orange City Festival Offer</option>
+                            <option value="Monsoon Mud Shield Discount">Monsoon Mud Shield Discount</option>
+                            <option value="Diwali Laxmi Premium Benefit">Diwali Laxmi Premium Benefit</option>
+                            <option value="Corporate Volume Benefit">Corporate Volume Benefit</option>
+                        </select>
+                    </div>
+
+                    <div id="txtDiscountConcession" class="hidden text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded font-bold border border-emerald-300">
+                        Customer Concession Saved: <span id="valDiscountConcession">₹0.00</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 5: Formatting Toggles & Global Variables -->
+            <!-- Section 5: Configuration & Print Trigger -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">Structural Configurations (e.g. G+3 Structure)</label>
-                    <input type="text" id="inConfig" placeholder="e.g., G+3 Structure (4200 sqft)" class="w-full border rounded p-2 text-sm focus:outline-none" oninput="updateQuote()">
-                </div>
-                <div class="flex items-end pb-1.5">
-                    <label class="flex items-center space-x-2 text-xs font-bold text-emerald-800 bg-emerald-50 p-2.5 rounded border border-emerald-200 w-full">
-                        <input type="checkbox" id="chkGPC" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" onchange="updateQuote()">
-                        <span>Attach Complimentary General Pest Control (GPC) Move-In Bonus</span>
-                    </label>
-                </div>
+                <input type="text" id="inConfig" placeholder="Structure Config (e.g. G+3, 4200 sqft)" class="w-full border rounded p-2 text-sm focus:outline-none" oninput="updateQuote()">
+                <label class="flex items-center space-x-2 text-xs font-bold text-emerald-800 bg-emerald-50 p-2.5 rounded border border-emerald-200">
+                    <input type="checkbox" id="chkGPC" onchange="updateQuote()">
+                    <span>Attach Complimentary General Pest Control (GPC) Move-In Bonus</span>
+                </label>
             </div>
 
-            <div class="flex justify-end pt-4 border-t border-slate-100">
+            <div class="flex justify-end pt-2 border-t border-slate-100">
                 <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded text-sm uppercase tracking-wider transition shadow-sm">
-                    Print / Generate Shareable PDF
+                    Print / Generate PDF Quote
                 </button>
             </div>
         </div>
@@ -307,7 +364,7 @@
     <!-- Official Document Preview Canvas -->
     <div id="printCanvas" class="max-w-4xl mx-auto my-8 bg-white p-10 shadow-lg border border-slate-300">
         
-        <!-- Corporate Header with Mobile Image Handling -->
+        <!-- Header -->
         <div class="print-border border-b-4 border-blue-600 pb-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="logo.jpg" alt="Ghar Suraksha Logo" class="w-20 h-20 object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-2xl tracking-tighter shadow\'>GS</div>';">
@@ -324,12 +381,12 @@
             </div>
         </div>
 
-        <div class="text-center text-lg font-black text-blue-600 my-5 uppercase tracking-widest">
+        <div class="text-center text-lg font-black text-blue-600 my-4 uppercase tracking-widest">
             Anti-Termite & Structural Protection Proposal
         </div>
 
         <!-- Meta Verification Information -->
-        <div class="grid grid-cols-2 gap-y-2 gap-x-8 text-sm border-b pb-4 mb-6">
+        <div class="grid grid-cols-2 gap-y-1.5 gap-x-8 text-xs border-b pb-3 mb-4">
             <div><span class="font-bold text-slate-500">Prepared For:</span> <span id="outName" class="font-bold text-slate-900"></span></div>
             <div><span class="font-bold text-slate-500">Quote Ref:</span> <span id="outRef" class="font-mono text-slate-700 font-bold"></span></div>
             <div><span class="font-bold text-slate-500">Site Address:</span> <span id="outAddress" class="text-slate-800"></span></div>
@@ -339,27 +396,27 @@
         </div>
 
         <!-- Statement of Importance -->
-        <div class="mb-6">
-            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1.5">1. Threat Profile & Importance Index</h4>
+        <div class="mb-4">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1">1. Threat Profile & Importance Index</h4>
             <p class="text-xs text-slate-600 leading-relaxed text-justify">
-                Subterranean termites and structural pests originate deep within foundational soil and raw interior timber layouts. Over time, micro-cracks and un-treated plywood sheets allow pests to compromise costly interior infrastructure. Applying specialized pressure-injection techniques and chemical barriers ensures complete long-term protection for your property.
+                Subterranean termites, wood borers, bed bugs, and structural pests originate deep within soil matrices, wall cracks, and untreated timber. Specialized pressure injection, thermal-chemical treatments, and mechanical barriers permanently eliminate active infestations and secure premises against future damage.
             </p>
         </div>
 
         <!-- Scope Specifications -->
-        <div class="mb-6">
-            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1.5">2. Technical Work Scope Framework</h4>
-            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+        <div class="mb-4">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1">2. Technical Work Scope Framework</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-0.5">
                 <li><strong>Structural Layout Configurations:</strong> <span id="outScopeConfig" class="font-medium text-slate-800">Standard Layout</span></li>
                 <li><strong>Execution Standard:</strong> Multi-point drill-inject-seal process using authorized eco-friendly residual solution matrices.</li>
                 <li id="outChemicalSpecLine" class="hidden"><strong>Chemical Formulation Specs:</strong> <span id="outChemicalSpecVal" class="font-bold text-slate-800"></span></li>
-                <li><strong>Site Logistics:</strong> Client to ensure uninterrupted water and power supply on site during service execution.</li>
+                <li><strong>Site Logistics:</strong> Uninterrupted water and power supply to be provided by client on-site.</li>
             </ul>
         </div>
 
         <!-- Dynamic Multi-Item Ledger Table -->
-        <div class="mb-6">
-            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1.5">3. Multi-Line Financial Itemization Matrix</h4>
+        <div class="mb-4">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1">3. Multi-Line Financial Itemization Matrix</h4>
             <table class="w-full text-left border-collapse text-xs">
                 <thead>
                     <tr class="bg-blue-600 text-white font-bold">
@@ -372,28 +429,61 @@
                 <tbody id="outLedgerBody" class="text-slate-700">
                     <!-- Dynamic Rows Insertion Box -->
                 </tbody>
-                <tfoot>
-                    <tr class="total-row font-bold text-slate-900 bg-slate-100">
-                        <td colspan="3" class="p-2 border text-right uppercase tracking-wider text-xs">Final Contract Deal Value:</td>
-                        <td class="p-2 border whitespace-nowrap text-sm text-blue-700 font-black" id="outGrandTotal">₹0.00</td>
-                    </tr>
+                <tfoot id="outLedgerFoot">
+                    <!-- Dynamic Total Rows -->
                 </tfoot>
             </table>
         </div>
 
+        <!-- Expected Client Payment Schedule Table -->
+        <div class="mb-4 bg-slate-50 border border-slate-200 p-3 rounded">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-2 flex justify-between items-center">
+                <span>4. Payment Expected from Client (Milestone Schedule)</span>
+                <span class="text-[9px] text-slate-500 font-normal">Accepted: <span id="outPaymentChannelsText" class="font-bold text-slate-700">UPI / Cash / Bank Transfer</span></span>
+            </h4>
+            <table class="w-full text-left border-collapse text-[11px]">
+                <thead>
+                    <tr class="bg-slate-200 text-slate-800 font-bold border-b border-slate-300">
+                        <th class="p-1.5 w-[30%]">Milestone Trigger</th>
+                        <th class="p-1.5 w-[45%]">Payment Expectations & Terms</th>
+                        <th class="p-1.5 w-[25%] text-right">Expected Amount (₹)</th>
+                    </tr>
+                </thead>
+                <tbody id="outPaymentScheduleBody" class="text-slate-700">
+                    <!-- Dynamic Payment Schedule Rows -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PRE-TREATMENT SITE PREPARATION GUIDELINES (Conditional) -->
+        <div id="outPrePrepBox" class="hidden border border-amber-300 bg-amber-50/80 p-2.5 rounded mb-3 text-[10px] text-amber-900 leading-relaxed">
+            <strong class="uppercase font-bold text-amber-900 block mb-1">Mandatory Site Preparation Guidelines (Before Technician Arrival):</strong>
+            <ul id="outPrePrepList" class="list-disc pl-4 space-y-0.5">
+                <!-- Dynamic pre-prep items -->
+            </ul>
+        </div>
+
+        <!-- POST-TREATMENT AFTERCARE GUIDELINES (Conditional) -->
+        <div id="outPostCareBox" class="hidden border border-blue-300 bg-blue-50/80 p-2.5 rounded mb-3 text-[10px] text-blue-900 leading-relaxed">
+            <strong class="uppercase font-bold text-blue-900 block mb-1">Post-Treatment Aftercare & Safety Protocol:</strong>
+            <ul id="outPostCareList" class="list-disc pl-4 space-y-0.5">
+                <!-- Dynamic post-care items -->
+            </ul>
+        </div>
+
         <!-- Move-In Bonus Box Notification -->
-        <div id="outBonusBox" class="hidden border border-emerald-600 bg-emerald-50 p-3 rounded mb-6 text-xs text-emerald-800">
-            <strong>Exclusive Complimentary Move-In Bonus:</strong> Ghar Suraksha will provide 1 Complete General Pest Control (GPC) Treatment entirely on the house prior to final site handover.
+        <div id="outBonusBox" class="hidden border border-emerald-600 bg-emerald-50 p-2.5 rounded mb-4 text-xs text-emerald-800">
+            <strong>Exclusive Move-In Bonus:</strong> Ghar Suraksha will provide 1 Complete General Pest Control (GPC) Treatment entirely free prior to final handover.
         </div>
 
         <!-- Legal Clauses & Conditions -->
-        <div class="mb-8 space-y-2 text-[10px] text-slate-500 leading-relaxed">
-            <p><strong>Payment Milestone Framework:</strong> <span id="outPaymentTermsStatement" class="font-bold text-slate-800">50% mobilization advance due immediately upon authorization; remaining 50% balance due cleanly upon completion.</span></p>
-            <p><strong>Institutional Service Warranty Framework:</strong> <span id="outWarrantyStatement" class="font-bold text-slate-800">This contract includes a 5-Year Structural Service Warranty for individual treatments.</span> All standard commercial operations and AMC layouts are governed cleanly by stated framework interval periodic durations.</p>
+        <div class="mb-6 space-y-1 text-[10px] text-slate-500 leading-relaxed">
+            <p><strong>Institutional Service Warranty Framework:</strong> <span id="outWarrantyStatement" class="font-bold text-slate-800"></span></p>
+            <p><strong>Site Damage Disclaimer:</strong> While maximum professional care is taken during floor/wall drilling, Ghar Suraksha Solutions is not liable for damage to concealed underground plumbing or electrical conduits.</p>
         </div>
 
         <!-- Signatures Layout -->
-        <div class="pt-6 flex justify-between text-xs font-bold text-slate-700">
+        <div class="pt-4 flex justify-between text-xs font-bold text-slate-700">
             <div class="border-t border-slate-300 pt-2 text-center w-48">
                 Client Selection Sign-off<br>
                 <span class="text-[9px] font-normal text-gray-400">(Signature & Date)</span>
@@ -413,57 +503,51 @@
 
         function toggleInputs() {
             structuralServiceIds.forEach(id => {
-                const isChecked = document.getElementById(id).checked;
-                document.getElementById('block_' + id).classList.toggle('hidden', !isChecked);
+                const el = document.getElementById(id);
+                if (el) document.getElementById('block_' + id).classList.toggle('hidden', !el.checked);
             });
             
-            const isPlyChecked = document.getElementById('svc_ply_treatment').checked;
-            document.getElementById('block_svc_ply_treatment').classList.toggle('hidden', !isPlyChecked);
+            const toggleBlock = (chkId, blockId) => {
+                const el = document.getElementById(chkId);
+                if (el) document.getElementById(blockId).classList.toggle('hidden', !el.checked);
+            };
+
+            toggleBlock('svc_ply_treatment', 'block_svc_ply_treatment');
+            toggleBlock('svc_bedbugs', 'block_svc_bedbugs');
+            toggleBlock('svc_woodborer', 'block_svc_woodborer');
+            toggleBlock('svc_rodent', 'block_svc_rodent');
+            toggleBlock('svc_birdnetting', 'block_svc_birdnetting');
 
             flatGpcSelectors.forEach(id => {
-                const el = document.getElementById(id);
-                if(el) {
-                    const isChecked = el.checked;
-                    document.getElementById('rate_block_' + id).classList.toggle('hidden', !isChecked);
-                }
+                toggleBlock(id, 'block_' + id);
             });
-            
+
             updateQuote();
         }
 
         function toggleCommercialFields() {
-            let anyCommercialChecked = false;
-            commercialIds.forEach(id => {
-                if (document.getElementById(id).checked) anyCommercialChecked = true;
-            });
-            
-            document.getElementById('comm_ops_block').classList.toggle('hidden', !anyCommercialChecked);
-            document.getElementById('comm_finance_block').classList.toggle('hidden', !anyCommercialChecked);
+            let anyChecked = commercialIds.some(id => document.getElementById(id).checked);
+            document.getElementById('comm_ops_block').classList.toggle('hidden', !anyChecked);
+            document.getElementById('comm_finance_block').classList.toggle('hidden', !anyChecked);
             handleCommercialModeChange();
         }
 
         function toggleChemicalInput() {
-            const isChemicalChecked = document.getElementById('chkShowChemical').checked;
-            document.getElementById('chemical_input_wrapper').classList.toggle('hidden', !isChemicalChecked);
+            const isChem = document.getElementById('chkShowChemical').checked;
+            document.getElementById('chemical_input_wrapper').classList.toggle('hidden', !isChem);
             updateQuote();
         }
 
         function handleCommercialModeChange() {
             const mode = document.getElementById('inCommMode').value;
             const isAmc = (mode === 'AMC');
-            
             document.getElementById('comm_visit_freq_wrapper').classList.toggle('hidden', !isAmc);
             document.getElementById('comm_payment_term_wrapper').classList.toggle('hidden', !isAmc);
-            
-            const labelEl = document.getElementById('commPriceInputLabel');
-            labelEl.innerText = isAmc ? "Term Period Price (₹)" : "Flat Trial Price (₹)";
-            
             updateQuote();
         }
 
         function toggleLumpSum() {
-            const isLumpActive = document.getElementById('chkLumpSumActive').checked;
-            document.getElementById('lump_sum_input_block').classList.toggle('hidden', !isLumpActive);
+            document.getElementById('lump_sum_input_block').classList.toggle('hidden', !document.getElementById('chkLumpSumActive').checked);
             updateQuote();
         }
 
@@ -476,13 +560,8 @@
             document.getElementById('outDate').innerText = today.toLocaleDateString('en-IN', formatOptions);
             document.getElementById('outValidity').innerText = validityDate.toLocaleDateString('en-IN', formatOptions) + ' (7-Day Term)';
 
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            const hours = String(today.getHours()).padStart(2, '0');
-            const mins = String(today.getMinutes()).padStart(2, '0');
-            
-            document.getElementById('outRef').innerText = `GS/QT/${year}/${month}-${day}${hours}${mins}`;
+            const refCode = `GS/QT/${today.getFullYear()}/${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}${String(today.getHours()).padStart(2,'0')}${String(today.getMinutes()).padStart(2,'0')}`;
+            document.getElementById('outRef').innerText = refCode;
         }
 
         function updateQuote() {
@@ -491,11 +570,9 @@
             document.getElementById('outMobile').innerText = document.getElementById('inMobile').value;
             document.getElementById('outScopeConfig').innerText = document.getElementById('inConfig').value || "Standard Layout";
 
-            // Chemical Line Toggle Engine
             const isChemActive = document.getElementById('chkShowChemical').checked;
             const chemVal = document.getElementById('inChemicalName').value;
             const chemLine = document.getElementById('outChemicalSpecLine');
-            
             if (isChemActive && chemVal.trim() !== '') {
                 chemLine.classList.remove('hidden');
                 document.getElementById('outChemicalSpecVal').innerText = chemVal;
@@ -506,156 +583,277 @@
             const ledgerBody = document.getElementById('outLedgerBody');
             ledgerBody.innerHTML = ''; 
             
-            let calculatedTotal = 0;
+            let calculatedSubtotal = 0;
+            let prePrepItems = [];
+            let postCareItems = [];
+
             let checkPre = document.getElementById('svc_termite_pre').checked;
             let checkPost = document.getElementById('svc_termite_post').checked;
 
-            // 1. Process Sqft Anti-Termite Barriers
+            // 1. Termite Barriers
             structuralServiceIds.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.checked) {
                     const specificArea = parseFloat(document.getElementById('sqft_val_' + id).value) || 0;
                     const customRate = parseFloat(document.getElementById('rate_val_' + id).value) || 0;
-                    const name = el.getAttribute('data-name');
                     const cost = specificArea * customRate;
-                    calculatedTotal += cost;
-                    
-                    appendLine(name, `Precision structural chemical saturation targeting independent ground and barrier layouts.`, `${specificArea.toLocaleString('en-IN')} Sqft @ ₹${customRate}/sqft`, cost, false);
+                    calculatedSubtotal += cost;
+                    appendLine(el.getAttribute('data-name'), `Precision chemical soil injection and deep barrier matrix.`, `${specificArea.toLocaleString('en-IN')} Sqft @ ₹${customRate}/sqft`, cost);
                 }
             });
 
-            // 2. Process Plywood Treatment Line Item
+            if (checkPost) {
+                prePrepItems.push("<strong>Anti-Termite:</strong> Shift wall-adjacent furniture 2 feet inward to allow floor drilling. Ensure 5A power & water supply are active on site.");
+                postCareItems.push("<strong>Anti-Termite:</strong> Do not wash or mop freshly drilled and sealed floor junctions for 24 hours to allow chemical barrier and sealants to set.");
+            }
+
+            // 2. Ply Treatment
             const plyEl = document.getElementById('svc_ply_treatment');
             if (plyEl && plyEl.checked) {
                 const plyCount = parseFloat(document.getElementById('ply_count_val').value) || 0;
                 const plyRate = parseFloat(document.getElementById('ply_rate_val').value) || 0;
-                const name = plyEl.getAttribute('data-name');
-                const plyCost = plyCount * plyRate;
-                calculatedTotal += plyCost;
-
-                appendLine(name, `Targeted chemical emulsion injection and joint-seal processing for furniture and ply sheets.`, `${plyCount} Sheets @ ₹${plyRate}/sheet`, plyCost, false);
+                const cost = plyCount * plyRate;
+                calculatedSubtotal += cost;
+                appendLine(plyEl.getAttribute('data-name'), `Deep chemical emulsion saturation injection for interior ply sheets.`, `${plyCount} Sheets @ ₹${plyRate}/sheet`, cost);
+                
+                prePrepItems.push("<strong>Ply Treatment:</strong> Ensure raw or unpolished plywood joints are fully accessible to technicians.");
+                postCareItems.push("<strong>Ply Treatment:</strong> Keep treated wooden surfaces dry and unpolished for 48 hours for complete chemical absorption.");
             }
 
-            // 3. Dynamic Warranty Engine
-            const warrantyEl = document.getElementById('outWarrantyStatement');
-            if (checkPre && checkPost) {
-                warrantyEl.innerText = "This comprehensive combo contract package delivers an ironclad, unconditional 7-Year Structural Service Warranty including periodic routine check-up operations.";
-            } else if (checkPre || checkPost) {
-                warrantyEl.innerText = "This contract framework delivers an ironclad 5-Year Standalone Structural Service Warranty including dynamic safety observation coverage.";
-            } else {
-                warrantyEl.innerText = "All individual domestic maintenance, ply treatments, and standard recurring treatments are fully covered for the duration of the scheduled agreement terms.";
+            // 3. Bed Bugs Eradication
+            const bedbugEl = document.getElementById('svc_bedbugs');
+            if (bedbugEl && bedbugEl.checked) {
+                const rooms = parseFloat(document.getElementById('bedbug_rooms').value) || 0;
+                const rate = parseFloat(document.getElementById('bedbug_rate').value) || 0;
+                const bType = document.getElementById('bedbug_type').value;
+                const cost = rooms * rate;
+                calculatedSubtotal += cost;
+                appendLine(bedbugEl.getAttribute('data-name'), `${bType} targeting harborage seams. Includes 2nd visit (Day 10-14) for egg hatch cycle extermination.`, `${rooms} Room(s) / Unit(s) @ ₹${rate}/unit`, cost);
+                
+                prePrepItems.push("<strong>Bed Bugs:</strong> Strip mattress covers/linens and wash in hot water (>60°C). Empty under-bed storage and lower wardrobe drawers.");
+                postCareItems.push("<strong>Bed Bugs:</strong> Vacuum mattress seams and baseboards daily for 7 days post-spray. Do not wash off wall/skirting perimeter sprays for 3 weeks.");
             }
 
-            // 4. Process Flat GPC Checkboxes
+            // 4. Wood Borer Treatment
+            const woodborerEl = document.getElementById('svc_woodborer');
+            if (woodborerEl && woodborerEl.checked) {
+                const cost = parseFloat(document.getElementById('woodborer_flat_rate').value) || 0;
+                calculatedSubtotal += cost;
+                appendLine(woodborerEl.getAttribute('data-name'), `Syringe injection of localized chemical preservative into exit holes + surface coating.`, `Fixed Account Scope`, cost);
+                
+                prePrepItems.push("<strong>Wood Borer:</strong> Clean frass/powder around affected timber to expose exit holes for precision syringe injection.");
+                postCareItems.push("<strong>Wood Borer:</strong> Allow 2 hours of room ventilation post-injection before prolonged occupancy.");
+            }
+
+            // 5. Rodent Control
+            const rodentEl = document.getElementById('svc_rodent');
+            if (rodentEl && rodentEl.checked) {
+                const cost = parseFloat(document.getElementById('rodent_flat_rate').value) || 0;
+                calculatedSubtotal += cost;
+                appendLine(rodentEl.getAttribute('data-name'), `Tamper-resistant bait station placement + rodent repellent gel & entry proofing audit.`, `Fixed Account Scope`, cost);
+                
+                prePrepItems.push("<strong>Rodent Control:</strong> Block major open garbage sources and seal food waste in hard bins overnight.");
+            }
+
+            // 6. Bird Netting
+            const birdEl = document.getElementById('svc_birdnetting');
+            if (birdEl && birdEl.checked) {
+                const sqft = parseFloat(document.getElementById('birdnet_sqft').value) || 0;
+                const rate = parseFloat(document.getElementById('birdnet_rate').value) || 0;
+                const netType = document.getElementById('birdnet_type').value;
+                const cost = sqft * rate;
+                calculatedSubtotal += cost;
+                appendLine(birdEl.getAttribute('data-name'), `Installation of heavy-duty UV-stabilized ${netType} with SS hooks & wire cabling.`, `${sqft.toLocaleString('en-IN')} Sqft @ ₹${rate}/sqft`, cost);
+                
+                prePrepItems.push("<strong>Bird Netting:</strong> Clear balcony ledges, plants, and hanging racks to allow structural cable anchor installation.");
+            }
+
+            // 7. General Pest Control (GPC)
+            let gpcCheckedCount = 0;
             flatGpcSelectors.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.checked) {
-                    const customFlatRate = parseFloat(document.getElementById('rate_val_' + id).value) || 0;
-                    const name = el.getAttribute('data-name');
-                    calculatedTotal += customFlatRate;
-                    
-                    appendLine(name, `Odorless gel treatment matrices placed inside micro-crevices with residual barrier optimization sprays.`, `1 Account Fixed`, customFlatRate, false);
+                    gpcCheckedCount++;
+                    const sqft = parseFloat(document.getElementById('sqft_' + id).value) || 0;
+                    const cost = parseFloat(document.getElementById('rate_' + id).value) || 0;
+                    calculatedSubtotal += cost;
+                    let metricLabel = sqft > 0 ? `${sqft.toLocaleString('en-IN')} Sqft Package` : `Fixed Flat Package`;
+                    appendLine(el.getAttribute('data-name'), `Odorless gel placement inside cabinets/crevices with residual perimeter sprays.`, metricLabel, cost);
                 }
             });
 
-            // 5. Process Commercial Module
-            let commSqft = parseFloat(document.getElementById('inCommSqft').value) || 0;
+            if (gpcCheckedCount > 0) {
+                prePrepItems.push("<strong>General Pest Control:</strong> Cover all open food items, utensils, and drinking water containers.");
+                postCareItems.push("<strong>General Pest Control:</strong> Do not wipe away gel bait dots placed inside cabinets. Keep children & pets clear for 2 hours post-spray.");
+            }
+
+            // 8. Commercial Module
             let commInputVal = parseFloat(document.getElementById('inCommRate').value) || 0;
+            let commSqft = parseFloat(document.getElementById('inCommSqft').value) || 0;
             let commMode = document.getElementById('inCommMode').value;
             let commVisitFreq = document.getElementById('inCommVisitFreq').value;
-            
-            let commBaseCost = commInputVal;
-            let commercialActive = false;
-            let currentPaymentTermText = "Upon Completion Milestone";
 
             commercialIds.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.checked) {
-                    commercialActive = true;
-                    const name = el.getAttribute('data-name');
-                    calculatedTotal += commBaseCost;
-                    
-                    let lineTitle = commMode === 'AMC' ? `${name} (AMC)` : `${name} (Trial Run)`;
-                    let lineDesc = commMode === 'AMC' 
-                        ? `Continuous contract maintenance tracking deployment via a customized **${commVisitFreq}** portfolio structure.` 
-                        : `Advanced one-time diagnostic treatment run to evaluate corporate environment sanitation structural boundaries.`;
-                        
-                    appendLine(lineTitle, lineDesc, commSqft > 0 ? `${commSqft.toLocaleString('en-IN')} Sqft Scope` : `Corporate Facility Account`, commBaseCost, false);
-                    
+                    calculatedSubtotal += commInputVal;
+                    let title = commMode === 'AMC' ? `${el.getAttribute('data-name')} (AMC)` : `${el.getAttribute('data-name')} (Trial Run)`;
+                    let desc = commMode === 'AMC' ? `Continuous portfolio protection via customized **${commVisitFreq}**.` : `One-time diagnostic treatment run.`;
+                    appendLine(title, desc, commSqft > 0 ? `${commSqft} Sqft Scope` : `Corporate Account`, commInputVal);
+
                     if (commMode === 'AMC') {
                         const selectTerm = document.getElementById('inCommPaymentTerm');
-                        currentPaymentTermText = selectTerm.value;
-                        const amcDiscountPct = parseFloat(selectTerm.options[selectTerm.selectedIndex].getAttribute('data-discount')) || 0;
-                        
-                        if (amcDiscountPct > 0) {
-                            let amcTermSavings = commBaseCost * (amcDiscountPct / 100);
-                            calculatedTotal -= amcTermSavings;
-                            appendLine(`Commercial Term Incentive Adjustment (${amcDiscountPct}%)`, `Promotional volume incentive reduction applied for selecting the advanced ${currentPaymentTermText} billing cycle.`, `Term Deduction`, -amcTermSavings, true);
+                        const discPct = parseFloat(selectTerm.options[selectTerm.selectedIndex].getAttribute('data-discount')) || 0;
+                        if (discPct > 0) {
+                            let savings = commInputVal * (discPct / 100);
+                            calculatedSubtotal -= savings;
+                            appendLine(`AMC Payment Term Incentive (${discPct}%)`, `Volume discount applied for selecting ${selectTerm.value}.`, `Term Concession`, -savings, true);
                         }
                     }
                 }
             });
 
-            // Payment Statement Handling
-            const paymentTermsStatementEl = document.getElementById('outPaymentTermsStatement');
-            if (commercialActive && commMode === 'AMC') {
-                let displayTermName = "Cycle Block";
-                if (currentPaymentTermText.includes("Monthly")) displayTermName = "Month";
-                if (currentPaymentTermText.includes("Quarterly")) displayTermName = "Quarter";
-                if (currentPaymentTermText.includes("Half-Yearly")) displayTermName = "Half-Year";
-                if (currentPaymentTermText.includes("Full Year")) displayTermName = "Year";
-                
-                paymentTermsStatementEl.innerText = `AMC Billing Framework: Stated package amount is due cleanly in advance at the beginning of each recurring ${displayTermName} lifecycle block.`;
-            } else {
-                paymentTermsStatementEl.innerText = "Standard Milestone Framework: 50% mobilization advance due immediately upon authorization; remaining 50% balance due cleanly upon layout completion handover validation.";
-            }
+            // Live update System Baseline Badge in control deck
+            document.getElementById('txtLiveSubtotal').innerText = '₹' + calculatedSubtotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-            document.getElementById('refCalcTotal').innerText = '₹' + calculatedTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-
-            // 6. Overwrites and Lump Sum Adjustments
+            // 9. Lump Sum Overwrite & Concession
             const isLumpActive = document.getElementById('chkLumpSumActive').checked;
             const lumpSumVal = parseFloat(document.getElementById('inLumpSumVal').value);
             const discountReason = document.getElementById('inDiscountTag').value;
             
-            let finalOutputPrice = calculatedTotal;
-            
+            let finalTaxableBase = calculatedSubtotal;
             if (isLumpActive && !isNaN(lumpSumVal)) {
-                finalOutputPrice = lumpSumVal;
-                let variance = calculatedTotal - lumpSumVal;
-                
+                let variance = calculatedSubtotal - lumpSumVal;
+                finalTaxableBase = lumpSumVal;
                 if (variance > 0) {
-                    document.getElementById('refDiscountBlock').classList.remove('hidden');
-                    document.getElementById('refDiscountVal').innerText = '₹' + variance.toLocaleString('en-IN', { minimumFractionDigits: 2 });
-                    appendLine(discountReason, 'Custom negotiated package commercial concession authorized on current item layout framework.', 'Discount Deduction', -variance, true);
+                    document.getElementById('txtDiscountConcession').classList.remove('hidden');
+                    document.getElementById('valDiscountConcession').innerText = '₹' + variance.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    appendLine(discountReason, 'Custom negotiated package commercial concession authorized on current layout framework.', 'Discount Deduction', -variance, true);
                 } else {
-                    document.getElementById('refDiscountBlock').classList.add('hidden');
+                    document.getElementById('txtDiscountConcession').classList.add('hidden');
                 }
             } else {
-                document.getElementById('refDiscountBlock').classList.add('hidden');
+                document.getElementById('txtDiscountConcession').classList.add('hidden');
+            }
+
+            // 10. GST Tax Engine
+            const applyGST = document.getElementById('chkApplyGST').checked;
+            const ledgerFoot = document.getElementById('outLedgerFoot');
+            let grandTotal = finalTaxableBase;
+
+            if (applyGST) {
+                let cgst = finalTaxableBase * 0.09;
+                let sgst = finalTaxableBase * 0.09;
+                grandTotal = finalTaxableBase + cgst + sgst;
+
+                ledgerFoot.innerHTML = `
+                    <tr class="font-semibold text-slate-700 bg-slate-50"><td colspan="3" class="p-1.5 border text-right uppercase text-[10px]">Taxable Amount (Subtotal):</td><td class="p-1.5 border text-right font-bold">₹${finalTaxableBase.toLocaleString('en-IN', {minimumFractionDigits:2})}</td></tr>
+                    <tr class="text-slate-600"><td colspan="3" class="p-1 border text-right text-[10px]">CGST @ 9%:</td><td class="p-1 border text-right">₹${cgst.toLocaleString('en-IN', {minimumFractionDigits:2})}</td></tr>
+                    <tr class="text-slate-600"><td colspan="3" class="p-1 border text-right text-[10px]">SGST @ 9%:</td><td class="p-1 border text-right">₹${sgst.toLocaleString('en-IN', {minimumFractionDigits:2})}</td></tr>
+                    <tr class="total-row font-black text-slate-900 bg-slate-100 text-sm"><td colspan="3" class="p-2 border text-right uppercase">Final Contract Deal Value (Incl. GST):</td><td class="p-2 border whitespace-nowrap text-blue-700 font-black text-right">₹${grandTotal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                `;
+            } else {
+                ledgerFoot.innerHTML = `
+                    <tr class="total-row font-black text-slate-900 bg-slate-100 text-sm"><td colspan="3" class="p-2 border text-right uppercase">Final Contract Deal Value:</td><td class="p-2 border whitespace-nowrap text-blue-700 font-black text-right">₹${grandTotal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                `;
+            }
+
+            // 11. Render Dynamic Payment Schedule
+            renderPaymentSchedule(grandTotal);
+
+            // 12. Dynamic Warranty Statement Engine
+            const warrantyEl = document.getElementById('outWarrantyStatement');
+            if (checkPre && checkPost) {
+                warrantyEl.innerText = "This comprehensive combo contract package delivers an ironclad, unconditional 7-Year Structural Service Warranty including periodic routine check-ups.";
+            } else if (checkPre || checkPost) {
+                warrantyEl.innerText = "This contract framework delivers an ironclad 5-Year Standalone Anti-Termite Service Warranty.";
+            } else {
+                warrantyEl.innerText = "All individual domestic maintenance, bed bug treatments, ply processing, and standard recurring treatments are covered for the duration of the scheduled agreement terms.";
+            }
+
+            // 13. Render Dynamic Pre & Post Precautions Boxes
+            const prePrepBox = document.getElementById('outPrePrepBox');
+            const prePrepList = document.getElementById('outPrePrepList');
+            if (prePrepItems.length > 0) {
+                prePrepBox.classList.remove('hidden');
+                prePrepList.innerHTML = prePrepItems.map(item => `<li class="mb-0.5">${item}</li>`).join('');
+            } else {
+                prePrepBox.classList.add('hidden');
+            }
+
+            const postCareBox = document.getElementById('outPostCareBox');
+            const postCareList = document.getElementById('outPostCareList');
+            if (postCareItems.length > 0) {
+                postCareBox.classList.remove('hidden');
+                postCareList.innerHTML = postCareItems.map(item => `<li class="mb-0.5">${item}</li>`).join('');
+            } else {
+                postCareBox.classList.add('hidden');
             }
 
             if (ledgerBody.children.length === 0) {
                 ledgerBody.innerHTML = `<tr><td colspan="4" class="p-4 border text-center text-slate-400 italic">Select active service packages from control layout above to generate dynamic quote outputs.</td></tr>`;
             }
 
-            document.getElementById('outGrandTotal').innerText = '₹' + finalOutputPrice.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             document.getElementById('outBonusBox').classList.toggle('hidden', !document.getElementById('chkGPC').checked);
+        }
+
+        function renderPaymentSchedule(grandTotal) {
+            const structure = document.getElementById('inPaymentStructure').value;
+            const channelText = document.getElementById('inPaymentChannel').value;
+            const schedBody = document.getElementById('outPaymentScheduleBody');
+            const customWrapper = document.getElementById('custom_payment_wrapper');
+            
+            document.getElementById('outPaymentChannelsText').innerText = channelText;
+            customWrapper.classList.toggle('hidden', structure !== 'CUSTOM');
+
+            let rowsHtml = '';
+
+            if (structure === '50_50') {
+                let adv = grandTotal * 0.50;
+                let bal = grandTotal * 0.50;
+                rowsHtml = `
+                    <tr class="border-b"><td class="p-1.5 font-bold text-slate-800">1st Mobilization Advance (50%)</td><td class="p-1.5">Due immediately upon contract signing & technician mobilization.</td><td class="p-1.5 text-right font-bold text-slate-900">₹${adv.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                    <tr><td class="p-1.5 font-bold text-slate-800">Final Handover Balance (50%)</td><td class="p-1.5">Due cleanly upon physical execution completion & site inspection.</td><td class="p-1.5 text-right font-bold text-slate-900">₹${bal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                `;
+            } else if (structure === '100_ADV') {
+                rowsHtml = `
+                    <tr><td class="p-1.5 font-bold text-slate-800">Full Upfront Payment (100%)</td><td class="p-1.5">Full contract deal value due prior to service execution.</td><td class="p-1.5 text-right font-bold text-slate-900">₹${grandTotal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                `;
+            } else if (structure === '40_40_20') {
+                let m1 = grandTotal * 0.40;
+                let m2 = grandTotal * 0.40;
+                let m3 = grandTotal * 0.20;
+                rowsHtml = `
+                    <tr class="border-b"><td class="p-1.5 font-bold text-slate-800">Stage 1 Mobilization (40%)</td><td class="p-1.5">Due upon work authorization & team deployment.</td><td class="p-1.5 text-right font-bold">₹${m1.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                    <tr class="border-b"><td class="p-1.5 font-bold text-slate-800">Stage 2 Mid-Execution (40%)</td><td class="p-1.5">Due after chemical drilling / initial spray completion.</td><td class="p-1.5 text-right font-bold">₹${m2.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                    <tr><td class="p-1.5 font-bold text-slate-800">Stage 3 Final Handover (20%)</td><td class="p-1.5">Due upon final sealing & handover validation.</td><td class="p-1.5 text-right font-bold">₹${m3.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                `;
+            } else if (structure === 'CUSTOM') {
+                let advPct = parseFloat(document.getElementById('inCustomAdvPct').value) || 30;
+                let balPct = parseFloat(document.getElementById('inCustomBalPct').value) || (100 - advPct);
+                let advVal = grandTotal * (advPct / 100);
+                let balVal = grandTotal * (balPct / 100);
+                rowsHtml = `
+                    <tr class="border-b"><td class="p-1.5 font-bold text-slate-800">Custom Mobilization (${advPct}%)</td><td class="p-1.5">Agreed upfront advance due before work commences.</td><td class="p-1.5 text-right font-bold">₹${advVal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                    <tr><td class="p-1.5 font-bold text-slate-800">Custom Final Balance (${balPct}%)</td><td class="p-1.5">Agreed balance due cleanly upon completion handover.</td><td class="p-1.5 text-right font-bold">₹${balVal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td></tr>
+                `;
+            }
+
+            schedBody.innerHTML = rowsHtml;
         }
 
         function appendLine(title, desc, metrics, cost, isDiscount = false) {
             const tbody = document.getElementById('outLedgerBody');
-            const displayCost = isDiscount 
-                ? '- ₹' + Math.abs(cost).toLocaleString('en-IN', { minimumFractionDigits: 2 })
-                : '₹' + cost.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+            const displayCost = isDiscount ? '- ₹' + Math.abs(cost).toLocaleString('en-IN', {minimumFractionDigits: 2}) : '₹' + cost.toLocaleString('en-IN', {minimumFractionDigits: 2});
             const textColorClass = isDiscount ? "text-emerald-700 font-bold" : "text-slate-900";
 
             const tr = document.createElement('tr');
             tr.className = `border-b ${isDiscount ? 'bg-emerald-50/60 font-medium' : 'odd:bg-white even:bg-slate-50/50'}`;
             tr.innerHTML = `
                 <td class="p-2 border font-bold ${textColorClass}">${title}</td>
-                <td class="p-2 border text-slate-600 leading-relaxed">${desc}</td>
+                <td class="p-2 border text-slate-600 leading-relaxed text-[11px]">${desc}</td>
                 <td class="p-2 border font-medium text-slate-800">${metrics}</td>
-                <td class="p-2 border font-bold whitespace-nowrap ${textColorClass}">${displayCost}</td>
+                <td class="p-2 border font-bold whitespace-nowrap text-right ${textColorClass}">${displayCost}</td>
             `;
             tbody.appendChild(tr);
         }
