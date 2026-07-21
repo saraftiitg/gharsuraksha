@@ -17,39 +17,41 @@
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans min-h-screen">
 
-    <!-- Salesman Master Control Deck (Hidden during printing) -->
+    <!-- Salesman Master Control Deck -->
     <div class="no-print max-w-6xl mx-auto my-6 bg-white p-6 rounded-lg shadow-md border border-slate-200">
         <h2 class="text-xl font-black text-slate-900 border-b pb-3 mb-5 uppercase tracking-wide text-blue-600 flex justify-between items-center">
-            <span>Salesman Multi-Service Deck (v6.5 - Clear Term Billing Engine)</span>
+            <span>Salesman Multi-Service Deck (v7.2 - Chemical Privacy Engine)</span>
             <span class="text-xs text-slate-500 font-semibold normal-case">Ghar Suraksha Enterprise System</span>
         </h2>
         
         <div class="space-y-6">
-            <!-- Section 1: Privacy Customer Profile Fields -->
+            <!-- Section 1: Customer Profile -->
             <div>
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">1. Confidential Client Profile</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">Customer Name</label>
-                        <input type="text" id="inName" placeholder="Start blank" class="w-full border rounded p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none" oninput="updateQuote()">
+                        <input type="text" id="inName" placeholder="Client Full Name" class="w-full border rounded p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none" oninput="updateQuote()">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">Site Location Address</label>
-                        <input type="text" id="inAddress" placeholder="Start blank" class="w-full border rounded p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none" oninput="updateQuote()">
+                        <input type="text" id="inAddress" placeholder="Site Address / Location" class="w-full border rounded p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none" oninput="updateQuote()">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">Mobile Number</label>
-                        <input type="text" id="inMobile" placeholder="Start blank" class="w-full border rounded p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none" oninput="updateQuote()">
+                        <input type="text" id="inMobile" placeholder="Contact Number" class="w-full border rounded p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none" oninput="updateQuote()">
                     </div>
                 </div>
             </div>
 
-            <!-- Section 2: Core Structural Termite & Residential Matrix -->
+            <!-- Section 2: Core Termite, Ply Treatment & Residential Matrix -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded border border-slate-200">
-                <!-- Termite Core Controls (Base values configured: Pre=6, Post=8) -->
+                
+                <!-- Termite Core Controls + PLYWOOD MODULE -->
                 <div class="space-y-4">
-                    <span class="block text-xs font-black uppercase text-blue-700 tracking-wider">Termite Barriers (Independent Area Fields)</span>
+                    <span class="block text-xs font-black uppercase text-blue-700 tracking-wider">Termite & Wood Protection Barriers</span>
                     
+                    <!-- Pre-Construction Shield -->
                     <div class="space-y-2 p-2 bg-white rounded border">
                         <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
                             <input type="checkbox" id="svc_termite_pre" data-type="sqft" data-rate="6" data-name="Pre-Construction Structural Shield" onchange="toggleInputs()">
@@ -57,16 +59,17 @@
                         </label>
                         <div id="block_svc_termite_pre" class="hidden space-y-2 pt-2 border-t mt-1">
                             <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-12">Area Sqft:</span>
+                                <span class="text-[10px] text-slate-500 w-16">Area Sqft:</span>
                                 <input type="number" id="sqft_val_svc_termite_pre" placeholder="Area" class="w-full border rounded p-1 text-xs" oninput="updateQuote()">
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-12">Rate (₹):</span>
+                                <span class="text-[10px] text-slate-500 w-16">Rate (₹):</span>
                                 <input type="number" id="rate_val_svc_termite_pre" value="6" step="0.1" class="w-full border rounded p-1 text-xs text-blue-600 font-bold" oninput="updateQuote()">
                             </div>
                         </div>
                     </div>
 
+                    <!-- Post-Construction Shield -->
                     <div class="space-y-2 p-2 bg-white rounded border">
                         <label class="flex items-center space-x-2 text-xs font-bold text-slate-700">
                             <input type="checkbox" id="svc_termite_post" data-type="sqft" data-rate="8" data-name="Post-Construction Anti-Termite Treatment" onchange="toggleInputs()">
@@ -74,15 +77,35 @@
                         </label>
                         <div id="block_svc_termite_post" class="hidden space-y-2 pt-2 border-t mt-1">
                             <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-12">Area Sqft:</span>
+                                <span class="text-[10px] text-slate-500 w-16">Area Sqft:</span>
                                 <input type="number" id="sqft_val_svc_termite_post" placeholder="Area" class="w-full border rounded p-1 text-xs" oninput="updateQuote()">
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="text-[10px] text-slate-500 w-12">Rate (₹):</span>
+                                <span class="text-[10px] text-slate-500 w-16">Rate (₹):</span>
                                 <input type="number" id="rate_val_svc_termite_post" value="8" step="0.1" class="w-full border rounded p-1 text-xs text-blue-600 font-bold" oninput="updateQuote()">
                             </div>
                         </div>
                     </div>
+
+                    <!-- Plywood / Furniture Deep Treatment Checkbox -->
+                    <div class="space-y-2 p-2 bg-amber-50/60 rounded border border-amber-200">
+                        <label class="flex items-center space-x-2 text-xs font-bold text-amber-900">
+                            <input type="checkbox" id="svc_ply_treatment" data-name="Plywood / Woodwork Termite Deep-Treatment" onchange="toggleInputs()">
+                            <span>Plywood Chemical Treatment (Per Sheet Rate)</span>
+                        </label>
+                        <div id="block_svc_ply_treatment" class="hidden space-y-2 pt-2 border-t border-amber-200 mt-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-[10px] text-slate-600 w-24">No. of Plys (Sheets):</span>
+                                <input type="number" id="ply_count_val" placeholder="e.g. 25" class="w-full border rounded p-1 text-xs font-bold" oninput="updateQuote()">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-[10px] text-slate-600 w-24">Rate per Ply (₹):</span>
+                                <input type="number" id="ply_rate_val" value="150" step="5" class="w-full border rounded p-1 text-xs text-amber-700 font-bold" oninput="updateQuote()">
+                            </div>
+                            <p class="text-[9px] text-slate-500 italic">Dynamic calculation based on carpenter's ply count sheet inputs.</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Domestic General Pest Control Flats -->
@@ -157,7 +180,7 @@
                         </div>
                     </div>
 
-                    <!-- Operational Setup Configuration Column -->
+                    <!-- Operational Setup Configuration -->
                     <div id="comm_ops_block" class="hidden bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-3">
                         <span class="block text-xs font-black uppercase text-amber-400 tracking-wider">1. Operational Workflow</span>
                         
@@ -180,9 +203,9 @@
                         </div>
                     </div>
 
-                    <!-- Financial Setup Configuration Column (With Split Billing Engine) -->
+                    <!-- Financial Setup & Optional Chemical Specification -->
                     <div id="comm_finance_block" class="hidden bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-3">
-                        <span class="block text-xs font-black uppercase text-emerald-400 tracking-wider">2. Financial Footprint Matrix</span>
+                        <span class="block text-xs font-black uppercase text-emerald-400 tracking-wider">2. Financial & Chemical Specs</span>
 
                         <div id="comm_payment_term_wrapper" class="hidden">
                             <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Payment Installment Schedule</label>
@@ -204,7 +227,19 @@
                                 <input type="number" id="inCommRate" placeholder="Rate / Cost" step="0.05" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs text-center font-bold text-amber-400" oninput="updateQuote()">
                             </div>
                         </div>
-                        <p class="text-[9px] text-slate-400 leading-tight italic" id="commBillingTip">For Trial: Enter flat cost or sqft rate. For AMC: Enter total base amount for one installment period.</p>
+
+                        <!-- NEW: Optional Chemical Name Toggle for Corporate Bids -->
+                        <div class="border-t border-slate-700 pt-2 mt-2">
+                            <label class="flex items-center space-x-2 text-[11px] font-semibold text-blue-300 cursor-pointer">
+                                <input type="checkbox" id="chkShowChemical" onchange="toggleChemicalInput()">
+                                <span>Specify Chemical Name (For Corporate PDF)</span>
+                            </label>
+                            <div id="chemical_input_wrapper" class="hidden mt-2">
+                                <input type="text" id="inChemicalName" placeholder="e.g. Imidacloprid 30.5% SC / Chlorpyrifos" class="w-full bg-slate-900 border border-slate-700 rounded p-1.5 text-xs text-amber-300 focus:outline-none" oninput="updateQuote()">
+                                <p class="text-[8px] text-slate-400 mt-1 italic">Leave unchecked for general public quotes to protect chemical privacy.</p>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -272,10 +307,10 @@
     <!-- Official Document Preview Canvas -->
     <div id="printCanvas" class="max-w-4xl mx-auto my-8 bg-white p-10 shadow-lg border border-slate-300">
         
-        <!-- Corporate Header -->
+        <!-- Corporate Header with Mobile Image Handling -->
         <div class="print-border border-b-4 border-blue-600 pb-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="logo.jpg" alt="Ghar Suraksha Logo" class="w-24 h-20 object-contain" onerror="this.style.display='none'">
+                <img src="logo.jpg" alt="Ghar Suraksha Logo" class="w-20 h-20 object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-2xl tracking-tighter shadow\'>GS</div>';">
                 <div>
                     <div class="text-3xl font-black text-slate-900 tracking-wider leading-tight">GHAR SURAKSHA</div>
                     <div class="text-sm font-bold text-slate-600 uppercase tracking-wide">Structural Anti-Termite & Pest Solutions</div>
@@ -290,7 +325,7 @@
         </div>
 
         <div class="text-center text-lg font-black text-blue-600 my-5 uppercase tracking-widest">
-            Anti-Termite & Commercial Protection Proposal
+            Anti-Termite & Structural Protection Proposal
         </div>
 
         <!-- Meta Verification Information -->
@@ -307,7 +342,7 @@
         <div class="mb-6">
             <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1.5">1. Threat Profile & Importance Index</h4>
             <p class="text-xs text-slate-600 leading-relaxed text-justify">
-                Termites and vector infestations originate deep within foundational structures and localized sub-floor earth matrices. Over time, dynamic building movements introduce microscopic structural paths, enabling crawling pests to compromise structural sanitization standards and high-value interior configurations. Continuous mechanical interventions and chemical blocks permanently clear layout parameters from active infestations.
+                Subterranean termites and structural pests originate deep within foundational soil and raw interior timber layouts. Over time, micro-cracks and un-treated plywood sheets allow pests to compromise costly interior infrastructure. Applying specialized pressure-injection techniques and chemical barriers ensures complete long-term protection for your property.
             </p>
         </div>
 
@@ -316,7 +351,9 @@
             <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-1.5">2. Technical Work Scope Framework</h4>
             <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
                 <li><strong>Structural Layout Configurations:</strong> <span id="outScopeConfig" class="font-medium text-slate-800">Standard Layout</span></li>
-                <li><strong>Selected Protocols:</strong> Integrated multi-visit sanitation and barrier management targeting listed parameters.</li>
+                <li><strong>Execution Standard:</strong> Multi-point drill-inject-seal process using authorized eco-friendly residual solution matrices.</li>
+                <li id="outChemicalSpecLine" class="hidden"><strong>Chemical Formulation Specs:</strong> <span id="outChemicalSpecVal" class="font-bold text-slate-800"></span></li>
+                <li><strong>Site Logistics:</strong> Client to ensure uninterrupted water and power supply on site during service execution.</li>
             </ul>
         </div>
 
@@ -326,8 +363,8 @@
             <table class="w-full text-left border-collapse text-xs">
                 <thead>
                     <tr class="bg-blue-600 text-white font-bold">
-                        <th class="p-2 border border-blue-600 uppercase tracking-wider w-[24%]">Service Item</th>
-                        <th class="p-2 border border-blue-600 uppercase tracking-wider w-[46%]">Operational Scope Details</th>
+                        <th class="p-2 border border-blue-600 uppercase tracking-wider w-[26%]">Service Item</th>
+                        <th class="p-2 border border-blue-600 uppercase tracking-wider w-[44%]">Operational Scope Details</th>
                         <th class="p-2 border border-blue-600 uppercase tracking-wider w-[15%]">Metrics</th>
                         <th class="p-2 border border-blue-600 uppercase tracking-wider w-[15%]">Line Cost</th>
                     </tr>
@@ -346,7 +383,7 @@
 
         <!-- Move-In Bonus Box Notification -->
         <div id="outBonusBox" class="hidden border border-emerald-600 bg-emerald-50 p-3 rounded mb-6 text-xs text-emerald-800">
-            <strong>Exclusive Complimentary Move-In Bonus:</strong> Ghar Suraksha will provide <strong>1 Complete General Pest Control (GPM) Treatment entirely on the house</strong>. This service will be executed right before final handover to ensure the structural space is 100% free from cockroaches, ants, and spiders.
+            <strong>Exclusive Complimentary Move-In Bonus:</strong> Ghar Suraksha will provide 1 Complete General Pest Control (GPC) Treatment entirely on the house prior to final site handover.
         </div>
 
         <!-- Legal Clauses & Conditions -->
@@ -368,10 +405,10 @@
         </div>
     </div>
 
-    <!-- Multi-Calculation Dynamic Core Script -->
+    <!-- Dynamic Script Engine -->
     <script>
         const structuralServiceIds = ['svc_termite_pre', 'svc_termite_post'];
-        const flatGpcSelectors = ['svc_gpc_1bhk', 'svc_gpc_2bhk', 'svc_gpc_3bhk', 'svc_gpc_villa', 'svc_gpc_restaurant', 'svc_gpc_hospital'];
+        const flatGpcSelectors = ['svc_gpc_1bhk', 'svc_gpc_2bhk', 'svc_gpc_3bhk', 'svc_gpc_villa'];
         const commercialIds = ['comm_building', 'comm_restaurant', 'comm_hospital', 'comm_builder', 'comm_hotel'];
 
         function toggleInputs() {
@@ -380,9 +417,15 @@
                 document.getElementById('block_' + id).classList.toggle('hidden', !isChecked);
             });
             
+            const isPlyChecked = document.getElementById('svc_ply_treatment').checked;
+            document.getElementById('block_svc_ply_treatment').classList.toggle('hidden', !isPlyChecked);
+
             flatGpcSelectors.forEach(id => {
-                const isChecked = document.getElementById(id).checked;
-                document.getElementById('rate_block_' + id).classList.toggle('hidden', !isChecked);
+                const el = document.getElementById(id);
+                if(el) {
+                    const isChecked = el.checked;
+                    document.getElementById('rate_block_' + id).classList.toggle('hidden', !isChecked);
+                }
             });
             
             updateQuote();
@@ -399,6 +442,12 @@
             handleCommercialModeChange();
         }
 
+        function toggleChemicalInput() {
+            const isChemicalChecked = document.getElementById('chkShowChemical').checked;
+            document.getElementById('chemical_input_wrapper').classList.toggle('hidden', !isChemicalChecked);
+            updateQuote();
+        }
+
         function handleCommercialModeChange() {
             const mode = document.getElementById('inCommMode').value;
             const isAmc = (mode === 'AMC');
@@ -406,13 +455,8 @@
             document.getElementById('comm_visit_freq_wrapper').classList.toggle('hidden', !isAmc);
             document.getElementById('comm_payment_term_wrapper').classList.toggle('hidden', !isAmc);
             
-            // Adjust input labels live to guide salesmen
             const labelEl = document.getElementById('commPriceInputLabel');
-            if (isAmc) {
-                labelEl.innerText = "Term Period Price (₹)";
-            } else {
-                labelEl.innerText = "Flat Trial Price (₹)";
-            }
+            labelEl.innerText = isAmc ? "Term Period Price (₹)" : "Flat Trial Price (₹)";
             
             updateQuote();
         }
@@ -447,6 +491,18 @@
             document.getElementById('outMobile').innerText = document.getElementById('inMobile').value;
             document.getElementById('outScopeConfig').innerText = document.getElementById('inConfig').value || "Standard Layout";
 
+            // Chemical Line Toggle Engine
+            const isChemActive = document.getElementById('chkShowChemical').checked;
+            const chemVal = document.getElementById('inChemicalName').value;
+            const chemLine = document.getElementById('outChemicalSpecLine');
+            
+            if (isChemActive && chemVal.trim() !== '') {
+                chemLine.classList.remove('hidden');
+                document.getElementById('outChemicalSpecVal').innerText = chemVal;
+            } else {
+                chemLine.classList.add('hidden');
+            }
+
             const ledgerBody = document.getElementById('outLedgerBody');
             ledgerBody.innerHTML = ''; 
             
@@ -454,7 +510,7 @@
             let checkPre = document.getElementById('svc_termite_pre').checked;
             let checkPost = document.getElementById('svc_termite_post').checked;
 
-            // 1. Process Split Sqft Controls with Custom Independent Area Fields
+            // 1. Process Sqft Anti-Termite Barriers
             structuralServiceIds.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.checked) {
@@ -464,21 +520,33 @@
                     const cost = specificArea * customRate;
                     calculatedTotal += cost;
                     
-                    appendLine(name, `Precision structural processing saturation matrices targeting independent layout profiles.`, `${specificArea.toLocaleString('en-IN')} Sqft @ ₹${customRate}/sqft`, cost, false);
+                    appendLine(name, `Precision structural chemical saturation targeting independent ground and barrier layouts.`, `${specificArea.toLocaleString('en-IN')} Sqft @ ₹${customRate}/sqft`, cost, false);
                 }
             });
 
-            // 2. Dynamic Adaptive Warranty Statement Logic
+            // 2. Process Plywood Treatment Line Item
+            const plyEl = document.getElementById('svc_ply_treatment');
+            if (plyEl && plyEl.checked) {
+                const plyCount = parseFloat(document.getElementById('ply_count_val').value) || 0;
+                const plyRate = parseFloat(document.getElementById('ply_rate_val').value) || 0;
+                const name = plyEl.getAttribute('data-name');
+                const plyCost = plyCount * plyRate;
+                calculatedTotal += plyCost;
+
+                appendLine(name, `Targeted chemical emulsion injection and joint-seal processing for furniture and ply sheets.`, `${plyCount} Sheets @ ₹${plyRate}/sheet`, plyCost, false);
+            }
+
+            // 3. Dynamic Warranty Engine
             const warrantyEl = document.getElementById('outWarrantyStatement');
             if (checkPre && checkPost) {
                 warrantyEl.innerText = "This comprehensive combo contract package delivers an ironclad, unconditional 7-Year Structural Service Warranty including periodic routine check-up operations.";
             } else if (checkPre || checkPost) {
                 warrantyEl.innerText = "This contract framework delivers an ironclad 5-Year Standalone Structural Service Warranty including dynamic safety observation coverage.";
             } else {
-                warrantyEl.innerText = "All individual domestic maintenance and standard recurring treatments are fully covered for the duration of the scheduled agreement terms.";
+                warrantyEl.innerText = "All individual domestic maintenance, ply treatments, and standard recurring treatments are fully covered for the duration of the scheduled agreement terms.";
             }
 
-            // 3. Process Flat GPC Checkboxes
+            // 4. Process Flat GPC Checkboxes
             flatGpcSelectors.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && el.checked) {
@@ -490,13 +558,12 @@
                 }
             });
 
-            // 4. Process Advanced Area-Based Commercial Accounts Matrix Layer
+            // 5. Process Commercial Module
             let commSqft = parseFloat(document.getElementById('inCommSqft').value) || 0;
             let commInputVal = parseFloat(document.getElementById('inCommRate').value) || 0;
             let commMode = document.getElementById('inCommMode').value;
             let commVisitFreq = document.getElementById('inCommVisitFreq').value;
             
-            // Treat the input box as the direct baseline term rate
             let commBaseCost = commInputVal;
             let commercialActive = false;
             let currentPaymentTermText = "Upon Completion Milestone";
@@ -515,7 +582,6 @@
                         
                     appendLine(lineTitle, lineDesc, commSqft > 0 ? `${commSqft.toLocaleString('en-IN')} Sqft Scope` : `Corporate Facility Account`, commBaseCost, false);
                     
-                    // Layer Automated AMC Payment Schedule Discounts independently
                     if (commMode === 'AMC') {
                         const selectTerm = document.getElementById('inCommPaymentTerm');
                         currentPaymentTermText = selectTerm.value;
@@ -530,7 +596,7 @@
                 }
             });
 
-            // Update Payment Due Disclaimer Text Block Live based on settings
+            // Payment Statement Handling
             const paymentTermsStatementEl = document.getElementById('outPaymentTermsStatement');
             if (commercialActive && commMode === 'AMC') {
                 let displayTermName = "Cycle Block";
@@ -546,7 +612,7 @@
 
             document.getElementById('refCalcTotal').innerText = '₹' + calculatedTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
 
-            // 5. Resolve Overwrites and Dynamic Regional Voucher Lines
+            // 6. Overwrites and Lump Sum Adjustments
             const isLumpActive = document.getElementById('chkLumpSumActive').checked;
             const lumpSumVal = parseFloat(document.getElementById('inLumpSumVal').value);
             const discountReason = document.getElementById('inDiscountTag').value;
